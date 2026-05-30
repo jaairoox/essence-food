@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essence Food</title>
+<meta name="theme-color" content="#0f1311">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Essence Food">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%231f4d2e'/%3E%3Cg%3E%3Cpath d='M90 36 C68 64 68 116 90 144 C112 116 112 64 90 36 Z' fill='%23f5f1e8'/%3E%3Cpath d='M90 128 L90 96' stroke='%231f4d2e' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M90 96 Q78 84 74 66' stroke='%231f4d2e' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3Cpath d='M90 96 Q86 82 84 66' stroke='%231f4d2e' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3Cpath d='M90 96 Q94 82 96 66' stroke='%231f4d2e' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3Cpath d='M90 96 Q102 84 106 66' stroke='%231f4d2e' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1311; --surface:#161b18; --card:#1c2320; --card2:#222a26;
+  --line:#2c352f; --line2:#3a453e;
+  --text:#f4f1ea; --text2:#b6bdb4; --text3:#7e867c;
+  --green:#6cc28a; --green-d:#3f9460;
+  --amber:#e0b15c; --clay:#e08a5e; --blue:#6aa8d8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;font-size:15px;}
+
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px 90px;}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(15,19,17,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 -24px 0;padding:0 24px;}
+.nav-in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto;}
+.brand{display:inline-flex;align-items:center;font-weight:800;font-size:15px;letter-spacing:-.2px;margin-right:auto;white-space:nowrap;}
+.brand b{color:var(--green);}
+.nlink{font-size:13px;font-weight:600;color:var(--text3);padding:7px 13px;border-radius:8px;white-space:nowrap;cursor:pointer;border:none;background:none;font-family:inherit;transition:.15s;}
+.nlink:hover{color:var(--text);background:var(--card);}
+.nlink.on{color:var(--bg);background:var(--green);}
+
+/* SECTIONS */
+.sec{display:none;}
+.sec.on{display:block;animation:fade .35s both;}
+@keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.head{padding:54px 0 34px;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:18px;}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--green);}
+.head h1{font-size:clamp(34px,5.5vw,56px);font-weight:800;line-height:1.04;letter-spacing:-1.5px;}
+.head h1 .g{color:var(--green);}
+.head p{margin-top:16px;max-width:560px;color:var(--text2);font-size:16px;}
+.head p b{color:var(--text);font-weight:600;}
+
+h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin:42px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+
+/* HERO STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:36px;}
+.stat{background:var(--card);padding:18px 20px;}
+.stat .l{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
+.stat .v{font-size:26px;font-weight:800;letter-spacing:-.5px;color:var(--text);}
+.stat .v small{font-size:13px;font-weight:600;color:var(--text3);}
+.stat .n{font-size:11px;color:var(--green);font-weight:600;margin-top:4px;}
+
+/* CALLOUT */
+.callout{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:12px;padding:26px 28px;margin-bottom:32px;}
+.callout .tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.callout h3{font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px;}
+.callout p{color:var(--text2);font-size:14.5px;max-width:660px;}
+.callout p+p{margin-top:10px;}
+.callout b{color:var(--text);font-weight:600;}
+.cmetrics{display:flex;flex-wrap:wrap;gap:26px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);}
+.cm .v{font-size:24px;font-weight:800;color:var(--green);letter-spacing:-.5px;}
+.cm .l{font-size:11px;color:var(--text3);margin-top:2px;}
+
+/* DAY TYPE */
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.dt{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.2s;}
+.dt:hover{border-color:var(--line2);transform:translateY(-3px);}
+.dt .top{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.dt .dot{width:9px;height:9px;border-radius:50%;}
+.dt.work .dot{background:var(--green);} .dt.run .dot{background:var(--clay);} .dt.rest .dot{background:var(--amber);}
+.dt .name{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text2);}
+.dt .kcal{font-size:42px;font-weight:800;letter-spacing:-1.5px;line-height:1;}
+.dt.work .kcal{color:var(--green);} .dt.run .kcal{color:var(--clay);} .dt.rest .kcal{color:var(--amber);}
+.dt .u{font-size:12px;color:var(--text3);font-weight:600;margin-top:4px;}
+.dt .desc{font-size:13px;color:var(--text2);margin-top:14px;line-height:1.6;}
+.dt .days{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--text3);}
+
+/* TABS */
+.tabs{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px;gap:3px;margin-bottom:22px;flex-wrap:wrap;}
+.tab{font-size:13px;font-weight:600;color:var(--text3);padding:8px 16px;border:none;background:none;border-radius:7px;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap;}
+.tab.on{background:var(--green);color:var(--bg);}
+.mpanel{display:none;}
+.mpanel.on{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.mc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;}
+.mc .l{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);}
+.mc .v{font-size:34px;font-weight:800;letter-spacing:-1px;margin-top:8px;}
+.mc.p .v{color:var(--green);} .mc.c .v{color:var(--amber);} .mc.f .v{color:var(--clay);} .mc.k .v{color:var(--text);}
+.mc .v small{font-size:15px;color:var(--text3);}
+.mc .s{font-size:11px;color:var(--text3);margin-top:5px;}
+
+/* CARDS3 */
+.c3{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:13px;}
+.ic{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;transition:.2s;}
+.ic:hover{border-color:var(--line2);}
+.ic .i{font-size:22px;margin-bottom:11px;}
+.ic h4{font-size:15px;font-weight:700;margin-bottom:5px;}
+.ic .dose{font-size:12px;font-weight:600;color:var(--green);margin-bottom:7px;}
+.ic p{font-size:13px;color:var(--text2);line-height:1.6;}
+
+/* DAY SELECTOR */
+.dsel{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;}
+.ds{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:60px;text-align:center;cursor:pointer;transition:.15s;}
+.ds:hover{border-color:var(--line2);}
+.ds.on{background:var(--green);border-color:var(--green);}
+.ds.on .d,.ds.on .t{color:var(--bg);}
+.ds .d{font-weight:700;font-size:14px;display:block;}
+.ds .t{font-size:10px;color:var(--text3);margin-top:2px;display:block;}
+
+.dpanel{display:none;}
+.dpanel.on{display:block;animation:fade .3s both;}
+
+.dsum{display:flex;flex-wrap:wrap;gap:24px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 24px;margin-bottom:14px;}
+.dsum .m{display:flex;flex-direction:column;}
+.dsum .v{font-size:20px;font-weight:800;letter-spacing:-.5px;}
+.dsum .v.k{color:var(--green);}
+.dsum .l{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);margin-top:3px;}
+.dsum .ctx{margin-left:auto;font-size:12px;color:var(--text2);font-weight:500;}
+
+.meal{display:grid;grid-template-columns:66px 1fr auto;gap:18px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line);}
+.meal:last-child{border:none;}
+.mclock .h{font-size:18px;font-weight:800;color:var(--green);display:block;line-height:1;letter-spacing:-.5px;}
+.mclock .l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;display:block;}
+.mtag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:5px;margin-bottom:7px;}
+.mtag.pre{background:rgba(224,177,92,.15);color:var(--amber);} .mtag.pos{background:rgba(108,194,138,.15);color:var(--green);} .mtag.main{background:rgba(224,138,94,.15);color:var(--clay);}
+.mname{font-size:16px;font-weight:700;letter-spacing:-.2px;}
+.mitems{font-size:13px;color:var(--text2);margin-top:4px;line-height:1.6;}
+.mitems em{font-style:normal;color:var(--green);font-weight:600;}
+.mcal{text-align:right;}
+.mcal .v{font-size:18px;font-weight:800;display:block;line-height:1;letter-spacing:-.5px;}
+.mcal .u{font-size:10px;color:var(--text3);}
+
+.satb{background:rgba(224,138,94,.1);border:1px solid rgba(224,138,94,.3);border-left:3px solid var(--clay);border-radius:10px;padding:18px 22px;margin-bottom:14px;display:flex;gap:16px;align-items:center;}
+.satb .si{font-size:26px;}
+.satb h4{font-size:16px;font-weight:700;color:var(--clay);}
+.satb p{font-size:13px;color:var(--text2);margin-top:3px;}
+
+/* SHOPPING */
+.smeta{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:14px;}
+.smeta p{font-size:14px;color:var(--text2);max-width:560px;}
+.smeta b{color:var(--text);}
+.stot .v{font-size:30px;font-weight:800;color:var(--clay);letter-spacing:-1px;line-height:1;}
+.stot .l{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);margin-top:4px;}
+.pwrap{margin-bottom:26px;}
+.ptop{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:600;}
+.ptrack{height:7px;background:var(--card);border-radius:6px;overflow:hidden;border:1px solid var(--line);}
+.pbar{height:100%;background:var(--green);width:0;transition:.35s;}
+.scols{columns:3;column-gap:16px;}
+.scat{break-inside:avoid;margin-bottom:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.scat-h{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;background:var(--card2);}
+.scat-h .i{font-size:15px;}
+.scat-h .t{font-size:13px;font-weight:700;}
+.scat-h .c{margin-left:auto;font-size:11px;color:var(--text3);font-weight:600;}
+.scat-b{padding:6px 16px 10px;}
+.si2{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--line);cursor:pointer;}
+.si2:last-child{border:none;}
+.box{width:16px;height:16px;border:2px solid var(--line2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s;}
+.si2.done .box{background:var(--green);border-color:var(--green);}
+.si2.done .box::after{content:'✓';color:var(--bg);font-size:10px;font-weight:800;}
+.si2.done .n{text-decoration:line-through;color:var(--text3);}
+.n{font-size:13px;font-weight:500;flex:1;}
+.n .st{color:var(--amber);font-size:9px;margin-left:2px;}
+.q{font-size:11px;color:var(--text3);font-weight:600;white-space:nowrap;}
+
+/* BATCH */
+.bdays{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:34px;}
+.bd{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);}
+.bd-h{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);}
+.bd-h h3{font-size:19px;font-weight:800;letter-spacing:-.5px;}
+.bd.sun h3{color:var(--green);} .bd.wed h3{color:var(--blue);}
+.bd-h .bt{font-size:11px;color:var(--text3);font-weight:600;}
+.bd-b{padding:16px 22px;}
+.bd-b p{font-size:13.5px;color:var(--text2);}
+.bd-b b{color:var(--text);}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.2s;}
+.step:hover{border-color:var(--line2);}
+.step-h{padding:13px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;}
+.step-n{font-size:12px;font-weight:800;width:26px;height:26px;border-radius:7px;background:var(--green);color:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-t{font-size:14px;font-weight:700;}
+.step-time{margin-left:auto;font-size:10px;font-weight:600;color:var(--clay);background:rgba(224,138,94,.12);padding:3px 8px;border-radius:6px;}
+.step-b{padding:14px 16px;}
+.step-b ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.step-b li{font-size:13px;color:var(--text2);padding-left:14px;position:relative;line-height:1.5;}
+.step-b li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--green-d);}
+.step-b .qq{font-weight:600;color:var(--green);font-size:12px;}
+.step-tip{margin-top:11px;padding:9px 12px;background:var(--surface);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.5;}
+.step-tip b{color:var(--amber);}
+.yields{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px;margin-top:22px;}
+.yield{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px;display:flex;gap:11px;align-items:center;}
+.yi{font-size:21px;flex-shrink:0;}
+.yn{font-size:13px;font-weight:600;}
+.yq{font-size:11px;color:var(--green);font-weight:600;margin-top:1px;}
+.yu{font-size:11px;color:var(--text3);margin-top:1px;}
+
+/* ASSEMBLY */
+.asm-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:13px;}
+.asm{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px 18px;transition:.2s;}
+.asm:hover{border-color:var(--line2);}
+.asm .d{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);}
+.asm .m{font-size:15px;font-weight:700;margin:5px 0 7px;letter-spacing:-.2px;}
+.asm .p{font-size:12.5px;color:var(--text2);line-height:1.6;}
+.asm .p em{font-style:normal;color:var(--green);font-weight:600;}
+.asm .tt{display:inline-block;margin-top:9px;font-size:10px;font-weight:600;color:var(--clay);background:rgba(224,138,94,.12);padding:3px 8px;border-radius:6px;}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:26px;margin-top:6px;}
+.tl::before{content:'';position:absolute;left:7px;top:5px;bottom:5px;width:2px;background:var(--line);}
+.tli{position:relative;padding:0 0 24px 20px;}
+.tld{position:absolute;left:-20px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--green);}
+.tld.clay{border-color:var(--clay);background:var(--clay);} .tld.amber{border-color:var(--amber);background:var(--amber);}
+.tlt{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);}
+.tlh{font-size:15px;font-weight:700;margin:3px 0;}
+.tlp{font-size:13px;color:var(--text2);line-height:1.5;}
+
+.endnote{margin-top:48px;padding:24px 28px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--green);border-radius:12px;font-size:13.5px;color:var(--text2);line-height:1.7;}
+.endnote b{color:var(--text);}
+.endnote .et{font-size:16px;font-weight:700;color:var(--text);margin-bottom:9px;display:block;}
+
+@media(max-width:820px){.scols{columns:2;}}
+@media(max-width:720px){.dgrid{grid-template-columns:1fr;}.mpanel.on{grid-template-columns:1fr 1fr;}.bdays{grid-template-columns:1fr;}.meal{grid-template-columns:56px 1fr;}.mcal{display:none;}.scols{columns:1;}.stats{grid-template-columns:1fr 1fr;}}
+
+/* CHECK-IN */
+.ci-bell{position:fixed;right:20px;bottom:20px;z-index:60;width:54px;height:54px;border-radius:50%;background:var(--green);border:none;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.4);font-size:22px;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.ci-bell:hover{transform:scale(1.08);}
+.ci-bell .dotpulse{position:absolute;top:10px;right:11px;width:10px;height:10px;border-radius:50%;background:var(--clay);border:2px solid var(--bg);display:none;}
+.ci-bell.due .dotpulse{display:block;animation:pulse 1.6s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.6;}}
+.ci-overlay{position:fixed;inset:0;z-index:100;background:rgba(8,11,9,.78);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;}
+.ci-overlay.on{display:flex;animation:fade .25s both;}
+.ci-modal{background:var(--surface);border:1px solid var(--line2);border-radius:18px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;padding:28px;}
+.ci-x{float:right;background:none;border:none;color:var(--text3);font-size:22px;cursor:pointer;line-height:1;}
+.ci-when{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+.ci-greet{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px;}
+.ci-q{font-size:14px;color:var(--text2);margin-bottom:18px;}
+.ci-q b{color:var(--text);}
+.ci-feels{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px;}
+.feel{display:flex;align-items:center;gap:10px;padding:13px 15px;background:var(--card);border:1.5px solid var(--line);border-radius:11px;cursor:pointer;transition:.15s;user-select:none;}
+.feel:hover{border-color:var(--line2);}
+.feel.sel{border-color:var(--green);background:rgba(108,194,138,.1);}
+.feel .fi{font-size:19px;}
+.feel .ft{font-size:13.5px;font-weight:600;}
+.feel .fc{margin-left:auto;width:16px;height:16px;border-radius:5px;border:2px solid var(--line2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.15s;}
+.feel.sel .fc{background:var(--green);border-color:var(--green);}
+.feel.sel .fc::after{content:'✓';color:var(--bg);font-size:10px;font-weight:800;}
+.ci-go{width:100%;padding:14px;background:var(--green);color:var(--bg);border:none;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;}
+.ci-go:hover{background:var(--green-d);}
+.ci-go:disabled{background:var(--card);color:var(--text3);cursor:not-allowed;}
+.ci-result{margin-top:4px;}
+.ci-meal-card{background:var(--card);border:1px solid var(--line2);border-left:3px solid var(--green);border-radius:12px;padding:20px 22px;margin-bottom:14px;}
+.ci-meal-when{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+.ci-meal-name{font-size:19px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px;}
+.ci-meal-items{font-size:13px;color:var(--text2);line-height:1.6;}
+.ci-meal-items em{font-style:normal;color:var(--green);font-weight:600;}
+.ci-why{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:16px 18px;margin-bottom:14px;}
+.ci-why h5{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
+.ci-why p{font-size:13.5px;color:var(--text2);line-height:1.65;}
+.ci-why p+p{margin-top:8px;}
+.ci-why b{color:var(--text);}
+.ci-back{width:100%;padding:12px;background:none;color:var(--text3);border:1px solid var(--line);border-radius:11px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.ci-back:hover{color:var(--text);border-color:var(--line2);}
+.pwa-install{position:fixed;left:20px;bottom:20px;z-index:60;display:none;align-items:center;gap:7px;padding:11px 16px;background:var(--surface);color:var(--green);border:1.5px solid var(--green);border-radius:30px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:.2s;}
+.pwa-install:hover{background:var(--green);color:var(--bg);}
+.pwa-install.show{display:inline-flex;}
+
+/* clickable step cards */
+.step.click{cursor:pointer;position:relative;}
+.step.click:hover{border-color:var(--green);}
+.step.click .step-h::after{content:'ver preparo ›';margin-left:8px;font-size:10px;font-weight:600;color:var(--green);white-space:nowrap;}
+.step.click .step-time{margin-left:0;}
+
+/* RECIPE MODAL */
+.rc-overlay{position:fixed;inset:0;z-index:100;background:rgba(8,11,9,.78);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;}
+.rc-overlay.on{display:flex;animation:fade .25s both;}
+.rc-modal{background:var(--surface);border:1px solid var(--line2);border-radius:18px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;padding:28px;}
+.rc-x{float:right;background:none;border:none;color:var(--text3);font-size:22px;cursor:pointer;line-height:1;}
+.rc-tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+.rc-title{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:4px;}
+.rc-sub{font-size:13px;color:var(--text2);margin-bottom:20px;}
+.rc-block{margin-bottom:20px;}
+.rc-block h5{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);margin-bottom:11px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+.rc-step{display:flex;gap:13px;margin-bottom:13px;}
+.rc-step .num{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:var(--green);color:var(--bg);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.rc-step .txt{font-size:14px;color:var(--text);line-height:1.55;padding-top:1px;}
+.rc-step .txt b{color:var(--green);font-weight:600;}
+.rc-note{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 16px;font-size:13px;color:var(--text2);line-height:1.6;}
+.rc-note b{color:var(--amber);}
+.rc-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.rc-list li{font-size:13.5px;color:var(--text2);padding-left:16px;position:relative;line-height:1.5;}
+.rc-list li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--green-d);}
+.rc-list li b{color:var(--text);font-weight:600;}
+</style>
+</head>
+<body>
+
+<button class="ci-bell" id="ciBell" onclick="openCheckin()" aria-label="Check-in">🔔<span class="dotpulse"></span></button>
+<button class="pwa-install" id="pwaInstall" onclick="installPWA()">⬇ Instalar app</button>
+
+<div class="rc-overlay" id="rcOverlay">
+  <div class="rc-modal">
+    <button class="rc-x" onclick="closeRecipe()">×</button>
+    <div id="rcBody"></div>
+  </div>
+</div>
+
+<div class="ci-overlay" id="ciOverlay">
+  <div class="ci-modal">
+    <button class="ci-x" onclick="closeCheckin()">×</button>
+    <div id="ciStep1">
+      <div class="ci-when" id="ciWhen">Check-in</div>
+      <div class="ci-greet" id="ciGreet">Olá, Jairo</div>
+      <div class="ci-q" id="ciQ">Como está se sentindo agora? <b>Pode marcar mais de um.</b></div>
+      <div class="ci-feels" id="ciFeels"></div>
+      <button class="ci-go" id="ciGo" disabled onclick="showSuggestion()">Ver sugestão</button>
+    </div>
+    <div id="ciStep2" class="ci-result" style="display:none;"></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-in">
+  <span class="brand"><svg width="28" height="34" viewBox="0 0 100 122" style="vertical-align:-5px;margin-right:9px;flex-shrink:0"><path d="M50 4 C25 36 25 94 50 118 C75 94 75 36 50 4 Z" fill="var(--green)"/><path d="M50 82 L50 50" stroke="var(--bg)" stroke-width="9" stroke-linecap="round"/><path d="M24 50 L76 50" stroke="var(--bg)" stroke-width="7.5" stroke-linecap="round"/><path d="M29 50 Q29 34 29 22" stroke="var(--bg)" stroke-width="6.5" stroke-linecap="round"/><path d="M41 50 Q41 35 41 22" stroke="var(--bg)" stroke-width="6.5" stroke-linecap="round"/><path d="M59 50 Q59 35 59 22" stroke="var(--bg)" stroke-width="6.5" stroke-linecap="round"/><path d="M71 50 Q71 34 71 22" stroke="var(--bg)" stroke-width="6.5" stroke-linecap="round"/></svg><span style="display:inline-flex;flex-direction:column;line-height:1;gap:1px"><span style="font-size:15px;font-weight:800;letter-spacing:-.2px">Essence</span><span style="font-size:9px;font-weight:600;letter-spacing:3px;color:var(--green)">FOOD</span></span></span>
+  <button class="nlink on" onclick="nav('overview',this)">Visão Geral</button>
+  <button class="nlink" onclick="nav('cardapio',this)">Cardápio</button>
+  <button class="nlink" onclick="nav('compras',this)">Compras</button>
+  <button class="nlink" onclick="nav('batch',this)">Batch</button>
+  <button class="nlink" onclick="nav('montagem',this)">Montagem</button>
+  <button class="nlink" onclick="nav('protocolo',this)">Protocolo</button>
+</div></div>
+
+<div class="wrap">
+
+<!-- OVERVIEW -->
+<div id="overview" class="sec on">
+  <div class="head">
+    <span class="eyebrow">Protocolo de Nutrição</span>
+    <h1>Comer pra construir.<br>Comer pra <span class="g">durar.</span></h1>
+    <p>Recomposição corporal para um corpo que <b>trabalha em pé o dia todo</b>, treina à noite e corre longo no fim de semana. Sem glúten, vegetais no centro do prato, proteína em cada refeição.</p>
+    <div class="stats">
+      <div class="stat"><div class="l">Peso · Altura</div><div class="v">86<small>kg</small> · 1,87<small>m</small></div></div>
+      <div class="stat"><div class="l">TDEE recalc.</div><div class="v">3.650<small>kcal</small></div><div class="n">+ trabalho físico</div></div>
+      <div class="stat"><div class="l">Proteína-alvo</div><div class="v">190<small>g/dia</small></div></div>
+      <div class="stat"><div class="l">Cozinhar</div><div class="v">2<small>×/sem</small></div><div class="n">dom + qua</div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="tag">Ajuste · trabalho de pintura</div>
+    <h3>Por que suas calorias subiram</h3>
+    <p>Pintar é trabalho físico de corpo inteiro: horas em pé, braços acima da cabeça, escada, carregar peso. Esse gasto — o <b>NEAT</b> — soma de <b>400 a 700 kcal por dia útil</b> que o cálculo anterior não capturava.</p>
+    <p>Somando trabalho + musculação + cardio diário + corrida longa, seu fator de atividade real fica em <b>1,85</b>, não 1,725. O gasto sobe de ~3.350 para <b>~3.650 kcal</b> nos dias de semana.</p>
+    <div class="cmetrics">
+      <div class="cm"><div class="v">+300</div><div class="l">kcal/dia útil vs. antes</div></div>
+      <div class="cm"><div class="v">1,85</div><div class="l">fator de atividade real</div></div>
+      <div class="cm"><div class="v">~600</div><div class="l">kcal do trabalho físico</div></div>
+    </div>
+  </div>
+
+  <h2 class="blk">Calorias por tipo de dia</h2>
+  <div class="dgrid">
+    <div class="dt work"><div class="top"><span class="dot"></span><span class="name">Trabalho + Treino</span></div><div class="kcal">3.700</div><div class="u">kcal · alvo</div><div class="desc">Pintura + musculação ou cardio. Surplus de construção sobre um gasto já alto.</div><div class="days">SEG · TER · QUA · QUI · SEX</div></div>
+    <div class="dt run"><div class="top"><span class="dot"></span><span class="name">Corrida Longa</span></div><div class="kcal">3.800</div><div class="u">kcal · alvo</div><div class="desc">Sábado, 10km+. A corrida queima 700–900 kcal. Reposição total de glicogênio.</div><div class="days">SÁBADO</div></div>
+    <div class="dt rest"><div class="top"><span class="dot"></span><span class="name">Descanso Ativo</span></div><div class="kcal">3.250</div><div class="u">kcal · alvo</div><div class="desc">Domingo. Sem trabalho, só cardio leve. Manutenção — o corpo reconstrói.</div><div class="days">DOMINGO</div></div>
+  </div>
+
+  <h2 class="blk">Macros por tipo de dia</h2>
+  <div class="tabs">
+    <button class="tab on" onclick="mac('mw',this)">Trabalho + Treino</button>
+    <button class="tab" onclick="mac('mr',this)">Corrida Longa</button>
+    <button class="tab" onclick="mac('md',this)">Descanso</button>
+  </div>
+  <div id="mw" class="mpanel on">
+    <div class="mc p"><div class="l">Proteína</div><div class="v">195<small>g</small></div><div class="s">2,3 g/kg</div></div>
+    <div class="mc c"><div class="l">Carboidrato</div><div class="v">450<small>g</small></div><div class="s">5,2 g/kg</div></div>
+    <div class="mc f"><div class="l">Gordura</div><div class="v">90<small>g</small></div><div class="s">1,0 g/kg</div></div>
+    <div class="mc k"><div class="l">Total</div><div class="v">3.700</div><div class="s">kcal · surplus</div></div>
+  </div>
+  <div id="mr" class="mpanel">
+    <div class="mc p"><div class="l">Proteína</div><div class="v">185<small>g</small></div><div class="s">2,15 g/kg</div></div>
+    <div class="mc c"><div class="l">Carboidrato</div><div class="v">500<small>g</small></div><div class="s">5,8 g/kg</div></div>
+    <div class="mc f"><div class="l">Gordura</div><div class="v">82<small>g</small></div><div class="s">0,95 g/kg</div></div>
+    <div class="mc k"><div class="l">Total</div><div class="v">3.800</div><div class="s">kcal · reposição</div></div>
+  </div>
+  <div id="md" class="mpanel">
+    <div class="mc p"><div class="l">Proteína</div><div class="v">185<small>g</small></div><div class="s">2,15 g/kg</div></div>
+    <div class="mc c"><div class="l">Carboidrato</div><div class="v">320<small>g</small></div><div class="s">3,7 g/kg</div></div>
+    <div class="mc f"><div class="l">Gordura</div><div class="v">95<small>g</small></div><div class="s">1,1 g/kg</div></div>
+    <div class="mc k"><div class="l">Total</div><div class="v">3.250</div><div class="s">kcal · manutenção</div></div>
+  </div>
+
+  <h2 class="blk">Como saber se está certo</h2>
+  <div class="c3">
+    <div class="ic"><div class="i">⚖️</div><h4>Pese 1×/semana</h4><p>Em jejum, mesmo dia e horário. Para recomposição: peso estável enquanto a força sobe.</p></div>
+    <div class="ic"><div class="i">🔋</div><h4>Monitore a energia</h4><p>Fadiga no trabalho ou treinos arrastados = comer pouco. Some 200–300 kcal nos dias de pintura.</p></div>
+    <div class="ic"><div class="i">📈</div><h4>Ajuste a cada 4 semanas</h4><p>Perdendo força sem querer? Suba calorias. Ganhando gordura? Reduza carbo nos dias de descanso.</p></div>
+  </div>
+</div>
+
+<!-- CARDAPIO -->
+<div id="cardapio" class="sec">
+  <div class="head">
+    <span class="eyebrow">Cardápio</span>
+    <h1>Sete dias, montados.</h1>
+    <p>Refeições calibradas para o gasto de cada dia. Musculação às segundas, quartas e sextas à noite.</p>
+  </div>
+
+  <div class="dsel">
+    <div class="ds on" onclick="day('d-seg',this)"><span class="d">Seg</span><span class="t">trab+musc</span></div>
+    <div class="ds" onclick="day('d-ter',this)"><span class="d">Ter</span><span class="t">trab+cardio</span></div>
+    <div class="ds" onclick="day('d-qua',this)"><span class="d">Qua</span><span class="t">trab+musc</span></div>
+    <div class="ds" onclick="day('d-qui',this)"><span class="d">Qui</span><span class="t">trab+cardio</span></div>
+    <div class="ds" onclick="day('d-sex',this)"><span class="d">Sex</span><span class="t">trab+musc</span></div>
+    <div class="ds" onclick="day('d-sab',this)"><span class="d">Sáb</span><span class="t">corrida</span></div>
+    <div class="ds" onclick="day('d-dom',this)"><span class="d">Dom</span><span class="t">descanso</span></div>
+  </div>
+
+  <div id="d-seg" class="dpanel on">
+    <div class="dsum"><div class="m"><span class="v k">3.700</span><span class="l">kcal</span></div>
+<div class="meal"><div class="mclock"><span class="h">04:50</span><span class="l">Desjejum</span></div><div><div class="mname">Chá de limão com xarope de gengibre</div><div class="mitems">Água quente · <em>suco de ½ limão</em> · xarope de gengibre · jejum quebrado suavemente</div></div><div class="mcal"><span class="v">12</span><span class="u">kcal</span></div></div>
+<div class="m"><span class="v">195g</span><span class="l">prot</span></div><div class="m"><span class="v">450g</span><span class="l">carbo</span></div><div class="m"><span class="v">90g</span><span class="l">gord</span></div><div class="ctx">🎨 Pintura + 🏋️ Musculação à noite</div></div>
+    <div class="meal"><div class="mclock"><span class="h">06:20</span><span class="l">Café</span></div><div><span class="mtag main">reforçado</span><div class="mname">Tigela de força + ovos</div><div class="mitems">Iogurte grego (200g) · <em>granola s/ glúten</em> · banana · pasta de amendoim · chia + 2 ovos cozidos p/ a estrada</div></div><div class="mcal"><span class="v">720</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">09:15</span><span class="l">Lanche</span></div><div><div class="mname">Combustível de obra</div><div class="mitems">Pão de arroz (3 fatias) · <em>½ abacate</em> · ovos · tomate</div></div><div class="mcal"><span class="v">520</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">11:45</span><span class="l">Almoço</span></div><div><span class="mtag main">principal</span><div class="mname">Frango, arroz integral & legumes</div><div class="mitems"><em>Frango (180g)</em> · arroz integral · brócolis · cenoura · espinafre · azeite</div></div><div class="mcal"><span class="v">800</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">17:45</span><span class="l">Pré</span></div><div><span class="mtag pre">2h antes</span><div class="mname">Batata-doce + frango + banana</div><div class="mitems"><em>Batata-doce (220g)</em> · frango (120g) · banana 45min antes</div></div><div class="mcal"><span class="v">650</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:20</span><span class="l">Pós</span></div><div><span class="mtag pos">janela 45min</span><div class="mname">Shake de recuperação</div><div class="mitems"><em>Whey (40g)</em> · aveia s/ glúten · leite · banana · cacau</div></div><div class="mcal"><span class="v">580</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:30</span><span class="l">Jantar</span></div><div><div class="mname">Salmão & legumes verdes</div><div class="mitems"><em>Salmão (180g)</em> · abobrinha · aspargos · alho · azeite · limão</div></div><div class="mcal"><span class="v">430</span><span class="u">kcal</span></div></div>
+  </div>
+
+  <div id="d-ter" class="dpanel">
+    <div class="dsum"><div class="m"><span class="v k">3.700</span><span class="l">kcal</span></div>
+<div class="meal"><div class="mclock"><span class="h">04:50</span><span class="l">Desjejum</span></div><div><div class="mname">Chá de limão com xarope de gengibre</div><div class="mitems">Água quente · <em>suco de ½ limão</em> · xarope de gengibre · jejum quebrado suavemente</div></div><div class="mcal"><span class="v">12</span><span class="u">kcal</span></div></div>
+<div class="m"><span class="v">195g</span><span class="l">prot</span></div><div class="m"><span class="v">450g</span><span class="l">carbo</span></div><div class="m"><span class="v">90g</span><span class="l">gord</span></div><div class="ctx">🎨 Pintura + 🏃 Cardio</div></div>
+    <div class="meal"><div class="mclock"><span class="h">06:20</span><span class="l">Café</span></div><div><div class="mname">Panqueca de banana s/ glúten</div><div class="mitems">2 bananas · 3 ovos · <em>farinha de arroz</em> · cacau · mel · frutas vermelhas</div></div><div class="mcal"><span class="v">640</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">09:15</span><span class="l">Lanche</span></div><div><div class="mname">Mix de energia</div><div class="mitems"><em>Castanhas (40g)</em> · queijo cottage · maçã · canela</div></div><div class="mcal"><span class="v">430</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">11:45</span><span class="l">Almoço</span></div><div><span class="mtag main">principal</span><div class="mname">Lentilha ao curry com quinoa</div><div class="mitems"><em>Lentilha vermelha</em> · quinoa · leite de coco · curry · couve · gengibre</div></div><div class="mcal"><span class="v">760</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">15:30</span><span class="l">Lanche</span></div><div><div class="mname">Tapioca proteica</div><div class="mitems"><em>Tapioca</em> · frango desfiado (120g) · queijo minas · rúcula</div></div><div class="mcal"><span class="v">520</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:30</span><span class="l">Jantar</span></div><div><div class="mname">Omelete grande de vegetais</div><div class="mitems">4 ovos · <em>espinafre</em> · cogumelos · pimentão · queijo minas</div></div><div class="mcal"><span class="v">560</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">21:25</span><span class="l">Ceia</span></div><div><span class="mtag pos">noturna</span><div class="mname">Ceia proteica</div><div class="mitems"><em>Iogurte grego (200g)</em> · chia · castanha-do-pará · mel</div></div><div class="mcal"><span class="v">290</span><span class="u">kcal</span></div></div>
+  </div>
+
+  <div id="d-qua" class="dpanel">
+    <div class="dsum"><div class="m"><span class="v k">3.700</span><span class="l">kcal</span></div>
+<div class="meal"><div class="mclock"><span class="h">04:50</span><span class="l">Desjejum</span></div><div><div class="mname">Chá de limão com xarope de gengibre</div><div class="mitems">Água quente · <em>suco de ½ limão</em> · xarope de gengibre · jejum quebrado suavemente</div></div><div class="mcal"><span class="v">12</span><span class="u">kcal</span></div></div>
+<div class="m"><span class="v">195g</span><span class="l">prot</span></div><div class="m"><span class="v">450g</span><span class="l">carbo</span></div><div class="m"><span class="v">90g</span><span class="l">gord</span></div><div class="ctx">🎨 Pintura + 🏋️ Musculação à noite</div></div>
+    <div class="meal"><div class="mclock"><span class="h">06:20</span><span class="l">Café</span></div><div><div class="mname">Açaí bowl proteico</div><div class="mitems"><em>Açaí puro</em> · whey · granola s/ glúten · banana · morangos</div></div><div class="mcal"><span class="v">680</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">09:15</span><span class="l">Lanche</span></div><div><div class="mname">Ovos + pão de arroz</div><div class="mitems">3 ovos · <em>pão de arroz</em> · abacate · tomate · sal rosa</div></div><div class="mcal"><span class="v">480</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">11:45</span><span class="l">Almoço</span></div><div><span class="mtag main">principal</span><div class="mname">Atum, quinoa & salada</div><div class="mitems"><em>Atum (2 latas)</em> · quinoa · rúcula · tomate · pepino · azeitona · azeite</div></div><div class="mcal"><span class="v">740</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">17:45</span><span class="l">Pré</span></div><div><span class="mtag pre">2h antes</span><div class="mname">Arroz, frango & batata-doce</div><div class="mitems"><em>Arroz integral</em> · frango (150g) · batata-doce · legumes</div></div><div class="mcal"><span class="v">700</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:20</span><span class="l">Pós</span></div><div><span class="mtag pos">janela 45min</span><div class="mname">Shake tropical</div><div class="mitems"><em>Whey (40g)</em> · manga · aveia s/ glúten · leite de amêndoas · cúrcuma</div></div><div class="mcal"><span class="v">500</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:30</span><span class="l">Jantar</span></div><div><div class="mname">Tilápia com purê de ervilha</div><div class="mitems"><em>Tilápia (200g)</em> · purê de ervilha · aspargos · alho · limão</div></div><div class="mcal"><span class="v">420</span><span class="u">kcal</span></div></div>
+  </div>
+
+  <div id="d-qui" class="dpanel">
+    <div class="dsum"><div class="m"><span class="v k">3.700</span><span class="l">kcal</span></div>
+<div class="meal"><div class="mclock"><span class="h">04:50</span><span class="l">Desjejum</span></div><div><div class="mname">Chá de limão com xarope de gengibre</div><div class="mitems">Água quente · <em>suco de ½ limão</em> · xarope de gengibre · jejum quebrado suavemente</div></div><div class="mcal"><span class="v">12</span><span class="u">kcal</span></div></div>
+<div class="m"><span class="v">195g</span><span class="l">prot</span></div><div class="m"><span class="v">450g</span><span class="l">carbo</span></div><div class="m"><span class="v">90g</span><span class="l">gord</span></div><div class="ctx">🎨 Pintura + 🏃 Cardio</div></div>
+    <div class="meal"><div class="mclock"><span class="h">06:20</span><span class="l">Café</span></div><div><div class="mname">Ovos, pão de arroz & abacate</div><div class="mitems">3 ovos mexidos · <em>pão de arroz</em> · ½ abacate · tomate</div></div><div class="mcal"><span class="v">620</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">09:15</span><span class="l">Lanche</span></div><div><div class="mname">Iogurte, frutas & nuts</div><div class="mitems">Iogurte grego · <em>frutas vermelhas</em> · nozes · chia · mel</div></div><div class="mcal"><span class="v">420</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">11:45</span><span class="l">Almoço</span></div><div><span class="mtag main">principal</span><div class="mname">Feijão preto, frango & couve</div><div class="mitems"><em>Feijão preto</em> · arroz integral · frango desfiado · couve · abóbora</div></div><div class="mcal"><span class="v">780</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">15:30</span><span class="l">Lanche</span></div><div><div class="mname">Smoothie verde proteico</div><div class="mitems"><em>Espinafre</em> · whey · abacaxi · leite de coco · gengibre</div></div><div class="mcal"><span class="v">440</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:30</span><span class="l">Jantar</span></div><div><div class="mname">Sopa creme de abóbora & frango</div><div class="mitems"><em>Abóbora</em> · frango desfiado · leite de coco · cúrcuma · gengibre</div></div><div class="mcal"><span class="v">560</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">21:25</span><span class="l">Ceia</span></div><div><span class="mtag pos">noturna</span><div class="mname">Ceia rápida</div><div class="mitems"><em>Cottage (150g)</em> · chia · kiwi · castanha-do-pará</div></div><div class="mcal"><span class="v">280</span><span class="u">kcal</span></div></div>
+  </div>
+
+  <div id="d-sex" class="dpanel">
+    <div class="dsum"><div class="m"><span class="v k">3.700</span><span class="l">kcal</span></div>
+<div class="meal"><div class="mclock"><span class="h">04:50</span><span class="l">Desjejum</span></div><div><div class="mname">Chá de limão com xarope de gengibre</div><div class="mitems">Água quente · <em>suco de ½ limão</em> · xarope de gengibre · jejum quebrado suavemente</div></div><div class="mcal"><span class="v">12</span><span class="u">kcal</span></div></div>
+<div class="m"><span class="v">195g</span><span class="l">prot</span></div><div class="m"><span class="v">450g</span><span class="l">carbo</span></div><div class="m"><span class="v">90g</span><span class="l">gord</span></div><div class="ctx">🎨 Pintura + 🏋️ Musculação · pré-carga p/ sábado</div></div>
+    <div class="meal"><div class="mclock"><span class="h">06:20</span><span class="l">Café</span></div><div><div class="mname">Bowl de força — sexta</div><div class="mitems">Iogurte grego · <em>granola s/ glúten</em> · manga · banana · pasta de amendoim · chia</div></div><div class="mcal"><span class="v">700</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">09:15</span><span class="l">Lanche</span></div><div><div class="mname">Whey, aveia & frutas</div><div class="mitems"><em>Whey (35g)</em> · aveia s/ glúten · leite · morango · banana</div></div><div class="mcal"><span class="v">480</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">11:45</span><span class="l">Almoço</span></div><div><span class="mtag main">principal</span><div class="mname">Grão-de-bico, salmão & quinoa</div><div class="mitems"><em>Grão-de-bico assado</em> · salmão (150g) · quinoa · espinafre · azeite</div></div><div class="mcal"><span class="v">780</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">17:45</span><span class="l">Pré</span></div><div><span class="mtag pre">2h antes</span><div class="mname">Batata-doce, ovos & banana</div><div class="mitems"><em>Batata-doce (220g)</em> · 3 ovos · banana · mel</div></div><div class="mcal"><span class="v">620</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:20</span><span class="l">Pós</span></div><div><span class="mtag pos">janela 45min</span><div class="mname">Shake de morango & aveia</div><div class="mitems"><em>Whey (40g)</em> · morango · aveia s/ glúten · leite · mel</div></div><div class="mcal"><span class="v">520</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:30</span><span class="l">Jantar</span></div><div><div class="mname">Camarão & arroz integral</div><div class="mitems"><em>Camarão (200g)</em> · arroz integral (carga p/ corrida) · pimentão · tamari · gergelim</div></div><div class="mcal"><span class="v">500</span><span class="u">kcal</span></div></div>
+  </div>
+
+  <div id="d-sab" class="dpanel">
+    <div class="satb"><span class="si">🏃‍♂️</span><div><h4>Sábado — Corrida Longa 10km+</h4><p>Carga de carbo na sexta à noite + reposição total no sábado. A corrida queima ~700–900 kcal.</p></div></div>
+    <div class="dsum"><div class="m"><span class="v k">3.800</span><span class="l">kcal</span></div><div class="m"><span class="v">185g</span><span class="l">prot</span></div><div class="m"><span class="v">500g</span><span class="l">carbo</span></div><div class="m"><span class="v">82g</span><span class="l">gord</span></div><div class="ctx">🔥 Reposição total de glicogênio</div></div>
+    <div class="meal"><div class="mclock"><span class="h">06:30</span><span class="l">Pré</span></div><div><span class="mtag pre">1h–1h30 antes</span><div class="mname">Carbo leve e rápido</div><div class="mitems"><em>2 bananas</em> · tapioca com mel · água de coco · sal rosa</div></div><div class="mcal"><span class="v">380</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">09:00</span><span class="l">Pós</span></div><div><span class="mtag pos">até 30min</span><div class="mname">Recuperação imediata</div><div class="mitems"><em>Whey (40g)</em> · aveia s/ glúten · banana · leite · mel · água de coco</div></div><div class="mcal"><span class="v">580</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">11:00</span><span class="l">Café</span></div><div><div class="mname">Ovos, batata-doce & frutas</div><div class="mitems">4 ovos · <em>batata-doce (250g)</em> · abacate · frutas vermelhas · granola</div></div><div class="mcal"><span class="v">720</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">14:00</span><span class="l">Almoço</span></div><div><span class="mtag main">especial</span><div class="mname">Moqueca de salmão com arroz</div><div class="mitems"><em>Salmão (200g)</em> · leite de coco · pimentão · tomate · coentro · arroz integral</div></div><div class="mcal"><span class="v">820</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">17:00</span><span class="l">Lanche</span></div><div><div class="mname">Shake de recuperação tardia</div><div class="mitems"><em>Whey (30g)</em> · manga · leite de coco · chia · mel</div></div><div class="mcal"><span class="v">420</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:30</span><span class="l">Jantar</span></div><div><div class="mname">Pizza de tapioca proteica</div><div class="mitems"><em>Base de tapioca</em> · frango desfiado · queijo · tomate · rúcula</div></div><div class="mcal"><span class="v">560</span><span class="u">kcal</span></div></div>
+  </div>
+
+  <div id="d-dom" class="dpanel">
+    <div class="dsum"><div class="m"><span class="v k">3.250</span><span class="l">kcal</span></div><div class="m"><span class="v">185g</span><span class="l">prot</span></div><div class="m"><span class="v">320g</span><span class="l">carbo</span></div><div class="m"><span class="v">95g</span><span class="l">gord</span></div><div class="ctx">🌿 Descanso ativo — recuperação</div></div>
+    <div class="meal"><div class="mclock"><span class="h">08:00</span><span class="l">Café</span></div><div><div class="mname">Café de domingo, sem pressa</div><div class="mitems">Omelete (3 ovos) · <em>queijo minas</em> · tomate · pão de arroz · abacate · café</div></div><div class="mcal"><span class="v">580</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">11:00</span><span class="l">Lanche</span></div><div><div class="mname">Frutas, castanhas & iogurte</div><div class="mitems">Iogurte grego · <em>uvas</em> · nozes · mel · hortelã</div></div><div class="mcal"><span class="v">360</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">13:00</span><span class="l">Almoço</span></div><div><span class="mtag main">especial</span><div class="mname">Frango assado, feijão & arroz</div><div class="mitems"><em>Coxa de frango assada</em> · feijão · arroz integral · couve · farofa de mandioca · laranja</div></div><div class="mcal"><span class="v">820</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">15:30</span><span class="l">Lanche</span></div><div><div class="mname">Shake de recuperação semanal</div><div class="mitems"><em>Whey (35g)</em> · banana · leite · aveia s/ glúten · canela</div></div><div class="mcal"><span class="v">460</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">19:30</span><span class="l">Jantar</span></div><div><div class="mname">Sopa de lentilha com frango</div><div class="mitems"><em>Lentilha</em> · frango desfiado · cenoura · aipo · cúrcuma · coentro</div></div><div class="mcal"><span class="v">560</span><span class="u">kcal</span></div></div>
+    <div class="meal"><div class="mclock"><span class="h">21:25</span><span class="l">Ceia</span></div><div><span class="mtag pos">noturna</span><div class="mname">Ceia proteica</div><div class="mitems"><em>Cottage (150g)</em> · chia · kiwi · castanha-do-pará</div></div><div class="mcal"><span class="v">260</span><span class="u">kcal</span></div></div>
+  </div>
+</div>
+
+<!-- COMPRAS -->
+<div id="compras" class="sec">
+  <div class="head">
+    <span class="eyebrow">Compras</span>
+    <h1>A lista, de uma vez.</h1>
+    <p>Tudo para sete dias. Toque nos itens enquanto enche o carrinho. Os com ⭐ são insubstituíveis.</p>
+  </div>
+  <div class="smeta"><p>Compra para <b>1 pessoa, 1 semana</b>. Porções dimensionadas para o gasto elevado dos dias de trabalho + treino.</p><div class="stot"><div class="v">~R$410</div><div class="l">estimativa semanal</div></div></div>
+  <div class="pwrap"><div class="ptop"><span>PROGRESSO</span><span id="ptext">0 / 0</span></div><div class="ptrack"><div class="pbar" id="pbar"></div></div></div>
+  <div class="scols">
+    <div class="scat"><div class="scat-h"><span class="i">🍗</span><span class="t">Proteínas Animais</span><span class="c">9</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Peito de frango<span class="st">⭐</span></span><span class="q">1,8 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Filé de salmão<span class="st">⭐</span></span><span class="q">700 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Filé de tilápia</span><span class="q">400 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Atum natural<span class="st">⭐</span></span><span class="q">6 latas</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Camarão limpo</span><span class="q">300 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Ovos caipira<span class="st">⭐</span></span><span class="q">36 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Coxa de frango</span><span class="q">400 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Linguiça de frango</span><span class="q">200 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Queijo cottage<span class="st">⭐</span></span><span class="q">600 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🌾</span><span class="t">Grãos & Carbos</span><span class="c">11</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Arroz integral<span class="st">⭐</span></span><span class="q">2,5 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Quinoa<span class="st">⭐</span></span><span class="q">600 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Aveia s/ glúten<span class="st">⭐</span></span><span class="q">700 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Tapioca (goma)<span class="st">⭐</span></span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Batata-doce<span class="st">⭐</span></span><span class="q">2,5 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Feijão preto</span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Lentilha vermelha<span class="st">⭐</span></span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Grão-de-bico (lata)</span><span class="q">3 latas</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Pão de arroz</span><span class="q">3 pacotes</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Farinha de arroz</span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Granola s/ glúten<span class="st">⭐</span></span><span class="q">600 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🥦</span><span class="t">Hortifruti</span><span class="c">16</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Banana<span class="st">⭐</span></span><span class="q">18 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Espinafre baby<span class="st">⭐</span></span><span class="q">300 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Brócolis</span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Couve-manteiga<span class="st">⭐</span></span><span class="q">2 maços</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Abobrinha</span><span class="q">4 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Cenoura</span><span class="q">1 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Abóbora cabotiá</span><span class="q">1 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Pimentão (cores)</span><span class="q">4 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Tomate</span><span class="q">1 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Pepino</span><span class="q">3 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Abacate<span class="st">⭐</span></span><span class="q">5 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Cogumelos</span><span class="q">200 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Aspargos</span><span class="q">1 maço</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Morangos</span><span class="q">300 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Maçã/Kiwi/Manga</span><span class="q">8 mix</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Alho+Cebola+Gengibre</span><span class="q">kit</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🥛</span><span class="t">Laticínios</span><span class="c">5</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Iogurte grego integral<span class="st">⭐</span></span><span class="q">1,5 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Queijo minas frescal</span><span class="q">300 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Leite integral</span><span class="q">2 L</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Leite de amêndoas</span><span class="q">1 L</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Leite de coco (lata)</span><span class="q">4 latas</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🫒</span><span class="t">Gorduras Boas</span><span class="c">8</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Azeite extravirgem<span class="st">⭐</span></span><span class="q">500 ml</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Pasta de amendoim<span class="st">⭐</span></span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Mix de castanhas</span><span class="q">400 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Castanha-do-pará<span class="st">⭐</span></span><span class="q">100 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Chia<span class="st">⭐</span></span><span class="q">200 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Linhaça dourada</span><span class="q">200 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Gergelim</span><span class="q">100 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Azeite de dendê</span><span class="q">100 ml</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🧊</span><span class="t">Congelados</span><span class="c">4</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Açaí puro s/ açúcar<span class="st">⭐</span></span><span class="q">2 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Ervilha congelada</span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Frutas vermelhas</span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Manga em pedaços</span><span class="q">400 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">💊</span><span class="t">Suplementos</span><span class="c">4</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Whey isolado s/ glúten<span class="st">⭐</span></span><span class="q">900 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Creatina monohidratada<span class="st">⭐</span></span><span class="q">300 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Cacau em pó 100%<span class="st">⭐</span></span><span class="q">200 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Colágeno (opcional)</span><span class="q">300 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🌿</span><span class="t">Temperos</span><span class="c">9</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Curry em pó<span class="st">⭐</span></span><span class="q">50 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Cúrcuma<span class="st">⭐</span></span><span class="q">50 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Tamari s/ glúten<span class="st">⭐</span></span><span class="q">200 ml</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Sal rosa himalaia</span><span class="q">1 pote</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Pimenta-do-reino</span><span class="q">50 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Mel puro<span class="st">⭐</span></span><span class="q">350 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Ervas frescas</span><span class="q">3 maços</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Canela em pó</span><span class="q">50 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Vinagre balsâmico</span><span class="q">250 ml</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">💧</span><span class="t">Hidratação</span><span class="c">5</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Água de coco<span class="st">⭐</span></span><span class="q">7 L</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Café moído</span><span class="q">250 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Chá verde/matcha</span><span class="q">1 caixa</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Limão</span><span class="q">8 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Laranja</span><span class="q">7 unid</span></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- BATCH -->
+<div id="batch" class="sec">
+  <div class="head">
+    <span class="eyebrow">Batch Cooking</span>
+    <h1>Cozinhe duas vezes.<br>Coma sete dias.</h1>
+    <p>Domingo e quarta. O resto da semana é só montar. Pensado para quem chega cansado do trabalho.</p>
+  </div>
+  <div class="bdays">
+    <div class="bd sun"><div class="bd-h"><h3>Domingo</h3><span class="bt">~2h00</span></div><div class="bd-b"><p>Abastece <b>Seg, Ter e Qua</b>. Proteínas, grãos e legumes em lote. 8–10 porções de cada. Feito no fim da tarde.</p></div></div>
+    <div class="bd wed"><div class="bd-h"><h3>Quarta</h3><span class="bt">~1h30</span></div><div class="bd-b"><p>Reabastece <b>Qui, Sex, Sáb e Dom</b>. Componentes frescos + kit de corrida de sábado já pronto.</p></div></div>
+  </div>
+  <h2 class="blk">Domingo — para seg · ter · qua</h2>
+  <div class="steps">
+    <div class="step click" data-recipe="graos" onclick="openRecipe('graos')"><div class="step-h"><div class="step-n">1</div><span class="step-t">Grãos</span><span class="step-time">45 min</span></div><div class="step-b"><ul><li>Arroz integral <span class="qq">700g cru</span></li><li>Quinoa <span class="qq">400g cru</span></li><li>Lentilha c/ curry <span class="qq">300g cru</span></li><li>Feijão preto <span class="qq">300g · pressão</span></li></ul><div class="step-tip"><b>Dica:</b> 4 panelas ao mesmo tempo. Arroz e quinoa em 20min, feijão em 25min.</div></div></div>
+    <div class="step click" data-recipe="forno" onclick="openRecipe('forno')"><div class="step-h"><div class="step-n">2</div><span class="step-t">Forno</span><span class="step-time">40 min</span></div><div class="step-b"><ul><li>Batata-doce <span class="qq">1,4 kg</span></li><li>Grão-de-bico <span class="qq">2 latas · curry</span></li><li>Cenoura + abobrinha <span class="qq">400g cada</span></li><li>Abóbora <span class="qq">600g</span></li></ul><div class="step-tip"><b>Dica:</b> tudo numa assadeira, 200°C. Vire na metade. Grão-de-bico crocante em 35min.</div></div></div>
+    <div class="step click" data-recipe="proteinas" onclick="openRecipe('proteinas')"><div class="step-h"><div class="step-n">3</div><span class="step-t">Proteínas</span><span class="step-time">30 min</span></div><div class="step-b"><ul><li>Frango <span class="qq">900g</span> grelhar+desfiar</li><li>Salmão <span class="qq">400g</span> em filés</li><li>Ovos cozidos <span class="qq">12 unid</span></li></ul><div class="step-tip"><b>Dica:</b> tempere o frango com alho, limão e ervas. Guarde o salmão inteiro, desmanche na hora.</div></div></div>
+    <div class="step click" data-recipe="bases" onclick="openRecipe('bases')"><div class="step-h"><div class="step-n">4</div><span class="step-t">Bases</span><span class="step-time">20 min</span></div><div class="step-b"><ul><li>Molho de tomate <span class="qq">500 ml</span></li><li>Caldo de frango <span class="qq">1 L</span></li><li>Finalizar lentilha c/ leite de coco</li></ul><div class="step-tip"><b>Dica:</b> congele o caldo em forminhas de gelo — dura 1 mês. Vai na sopa de quinta.</div></div></div>
+    <div class="step click" data-recipe="lanches" onclick="openRecipe('lanches')"><div class="step-h"><div class="step-n">5</div><span class="step-t">Lanches</span><span class="step-time">15 min</span></div><div class="step-b"><ul><li>Porcionar castanhas <span class="qq">3 saquinhos</span></li><li>Lavar e secar frutas</li><li>Iogurte em potes <span class="qq">200g</span></li><li>Mix granola + chia</li></ul><div class="step-tip"><b>Dica:</b> tudo em potes de vidro. Geladeira organizada motiva comer bem.</div></div></div>
+    <div class="step click" data-recipe="organizar" onclick="openRecipe('organizar')"><div class="step-h"><div class="step-n">6</div><span class="step-t">Organizar</span><span class="step-time">10 min</span></div><div class="step-b"><ul><li><span class="qq">Prateleira 1:</span> proteínas</li><li><span class="qq">Prateleira 2:</span> grãos</li><li><span class="qq">Prateleira 3:</span> legumes</li><li><span class="qq">Gaveta:</span> lanches + frutas</li></ul><div class="step-tip"><b>Dica:</b> etiquete a data. Proteínas duram 4 dias, grãos 5 dias.</div></div></div>
+  </div>
+  <div class="yields">
+    <div class="yield"><span class="yi">🍗</span><div><div class="yn">Frango desfiado</div><div class="yq">~750g</div><div class="yu">Seg, Ter, Qua</div></div></div>
+    <div class="yield"><span class="yi">🐟</span><div><div class="yn">Salmão</div><div class="yq">~380g</div><div class="yu">Seg, Qua</div></div></div>
+    <div class="yield"><span class="yi">🍚</span><div><div class="yn">Arroz integral</div><div class="yq">~2 kg</div><div class="yu">3 almoços</div></div></div>
+    <div class="yield"><span class="yi">🫘</span><div><div class="yn">Feijão preto</div><div class="yq">~900g</div><div class="yu">Qui + Dom</div></div></div>
+    <div class="yield"><span class="yi">🌿</span><div><div class="yn">Lentilha curry</div><div class="yq">~1 kg</div><div class="yu">Ter + Qua</div></div></div>
+    <div class="yield"><span class="yi">🍠</span><div><div class="yn">Batata-doce</div><div class="yq">~1,2 kg</div><div class="yu">Pré-treinos</div></div></div>
+    <div class="yield"><span class="yi">🥕</span><div><div class="yn">Legumes assados</div><div class="yq">~800g</div><div class="yu">3 dias</div></div></div>
+    <div class="yield"><span class="yi">🥚</span><div><div class="yn">Ovos cozidos</div><div class="yq">12 unid</div><div class="yu">Cafés + lanches</div></div></div>
+  </div>
+  <h2 class="blk">Quarta — para qui · sex · sáb · dom</h2>
+  <div class="steps">
+    <div class="step click" data-recipe="graosnovos" onclick="openRecipe('graosnovos')"><div class="step-h"><div class="step-n">1</div><span class="step-t">Grãos novos</span><span class="step-time">35 min</span></div><div class="step-b"><ul><li>Quinoa <span class="qq">300g cru</span></li><li>Arroz integral <span class="qq">500g cru</span></li><li>Grão-de-bico <span class="qq">1 lata assada</span></li></ul><div class="step-tip"><b>Dica:</b> mais rápido — rotina já dominada. Grãos cozinham enquanto faz as proteínas.</div></div></div>
+    <div class="step click" data-recipe="proteinas" onclick="openRecipe('proteinas')"><div class="step-h"><div class="step-n">2</div><span class="step-t">Proteínas</span><span class="step-time">30 min</span></div><div class="step-b"><ul><li>Frango <span class="qq">600g</span></li><li>Tilápia <span class="qq">400g</span></li><li>Ovos cozidos <span class="qq">10 unid</span></li><li>Coxa de frango <span class="qq">400g assar</span></li></ul><div class="step-tip"><b>Dica:</b> a coxa vai ao forno junto com os legumes.</div></div></div>
+    <div class="step click" data-recipe="legumes" onclick="openRecipe('legumes')"><div class="step-h"><div class="step-n">3</div><span class="step-t">Legumes</span><span class="step-time">25 min</span></div><div class="step-b"><ul><li>Batata-doce <span class="qq">800g</span></li><li>Brócolis + abobrinha <span class="qq">500g</span></li><li>Abóbora p/ sopa <span class="qq">400g</span></li><li>Aspargos branqueados</li></ul><div class="step-tip"><b>Dica:</b> cozinhe a abóbora com o caldo de frango do domingo.</div></div></div>
+    <div class="step click" data-recipe="kitsabado" onclick="openRecipe('kitsabado')"><div class="step-h"><div class="step-n">4</div><span class="step-t">Kit Sábado</span><span class="step-time">15 min</span></div><div class="step-b"><ul><li>Separar <span class="qq">2 bananas</span></li><li>Tapioca <span class="qq">2 unid</span></li><li>Whey medido em pote</li><li>Água de coco gelada</li></ul><div class="step-tip"><b>Dica:</b> deixe o kit de corrida pronto na quarta. Zero decisão às 6h30 de sábado.</div></div></div>
+  </div>
+  <div class="yields">
+    <div class="yield"><span class="yi">🍗</span><div><div class="yn">Frango novo</div><div class="yq">~550g</div><div class="yu">Qui, Sex, Dom</div></div></div>
+    <div class="yield"><span class="yi">🐟</span><div><div class="yn">Tilápia</div><div class="yq">~380g</div><div class="yu">Qui, Sex</div></div></div>
+    <div class="yield"><span class="yi">🍚</span><div><div class="yn">Arroz + Quinoa</div><div class="yq">~1,2 kg</div><div class="yu">Qui→Dom</div></div></div>
+    <div class="yield"><span class="yi">🍠</span><div><div class="yn">Batata-doce</div><div class="yq">~700g</div><div class="yu">Sex + Sáb</div></div></div>
+    <div class="yield"><span class="yi">🥕</span><div><div class="yn">Legumes</div><div class="yq">~600g</div><div class="yu">Qui, Sex, Sáb</div></div></div>
+    <div class="yield"><span class="yi">🍗</span><div><div class="yn">Coxa assada</div><div class="yq">~350g</div><div class="yu">Dom especial</div></div></div>
+  </div>
+</div>
+
+<!-- MONTAGEM -->
+<div id="montagem" class="sec">
+  <div class="head">
+    <span class="eyebrow">Montagem</span>
+    <h1>Cinco minutos por refeição.</h1>
+    <p>Com os componentes prontos, comer bem vira questão de combinar.</p>
+  </div>
+  <div class="asm-g">
+    <div class="asm"><div class="d">Seg · Café</div><div class="m">Tigela proteica</div><div class="p"><em>Iogurte</em> + <em>granola</em> + banana + chia + mel</div><span class="tt">⚡ 3 min</span></div>
+    <div class="asm"><div class="d">Seg · Almoço</div><div class="m">Bowl de frango</div><div class="p"><em>Arroz</em> + <em>frango</em> + legumes → micro 2min</div><span class="tt">⚡ 5 min</span></div>
+    <div class="asm"><div class="d">Seg/Qua/Sex · 17h</div><div class="m">Pré-treino</div><div class="p"><em>Batata-doce</em> + <em>frango</em>. Banana p/ 45min antes</div><span class="tt">⚡ 4 min</span></div>
+    <div class="asm"><div class="d">Pós-treino · 21h</div><div class="m">Shake recuperação</div><div class="p">Bater <em>whey</em> + aveia + leite + banana</div><span class="tt">⚡ 3 min</span></div>
+    <div class="asm"><div class="d">Ter · Almoço</div><div class="m">Lentilha curry</div><div class="p"><em>Lentilha</em> + <em>quinoa</em>. Couve fresca em 3min</div><span class="tt">⚡ 6 min</span></div>
+    <div class="asm"><div class="d">Qua · Almoço</div><div class="m">Atum & quinoa</div><div class="p">Atum + <em>quinoa</em> + rúcula + tomate. Zero fogo</div><span class="tt">⚡ 4 min</span></div>
+    <div class="asm"><div class="d">Qui · Jantar</div><div class="m">Sopa de abóbora</div><div class="p"><em>Abóbora</em> batida + <em>frango</em> por cima</div><span class="tt">⚡ 7 min</span></div>
+    <div class="asm"><div class="d">Sex · Almoço</div><div class="m">Bowl mediterrâneo</div><div class="p"><em>Grão-de-bico</em> + <em>quinoa</em> + salmão. Frio</div><span class="tt">⚡ 4 min</span></div>
+    <div class="asm"><div class="d">Sáb · 06h30</div><div class="m">Kit corrida</div><div class="p"><em>Bananas</em> + tapioca com mel + água de coco</div><span class="tt">⚡ 5 min</span></div>
+    <div class="asm"><div class="d">Sáb · 09h</div><div class="m">Pós-corrida</div><div class="p">Shake: <em>whey</em> + aveia + banana + água de coco</div><span class="tt">⚡ 3 min</span></div>
+  </div>
+  <h2 class="blk">A semana inteira</h2>
+  <div class="tl">
+    <div class="tli"><div class="tld"></div><div class="tlt">Domingo · 15h–17h</div><div class="tlh">Batch Cooking #1</div><div class="tlp">2h de cozinha. Rende para Seg, Ter, Qua.</div></div>
+    <div class="tli"><div class="tld"></div><div class="tlt">Seg · 06h30 → 22h30</div><div class="tlh">🎨 Trabalho + 🏋️ Musculação</div><div class="tlp">Café reforçado, lanche levável p/ obra. Pré às 17h, pós às 21h.</div></div>
+    <div class="tli"><div class="tld"></div><div class="tlt">Ter · dia todo</div><div class="tlh">🎨 Trabalho + 🏃 Cardio</div><div class="tlp">Lentilha do batch + omelete rápido no jantar. Ceia proteica.</div></div>
+    <div class="tli"><div class="tld clay"></div><div class="tlt">Qua · 19h</div><div class="tlh">Batch Cooking #2 (após o trabalho)</div><div class="tlp">1h30 reabastecendo. Kit de sábado já sai pronto.</div></div>
+    <div class="tli"><div class="tld"></div><div class="tlt">Qui + Sex</div><div class="tlh">🎨 Rotina fluindo</div><div class="tlp">Geladeira cheia. Só montar e aquecer. Sex carrega carbo p/ corrida.</div></div>
+    <div class="tli"><div class="tld amber"></div><div class="tlt">Sáb · 06h30</div><div class="tlh">🏃‍♂️ Corrida Longa 10km+</div><div class="tlp">Kit pronto desde quarta. Pré, durante e pós planejados.</div></div>
+    <div class="tli"><div class="tld"></div><div class="tlt">Dom · recomeço</div><div class="tlh">🌿 Descanso + novo ciclo</div><div class="tlp">Cardio leve, almoço especial. À tarde, novo batch.</div></div>
+  </div>
+</div>
+
+<!-- PROTOCOLO -->
+<div id="protocolo" class="sec">
+  <div class="head">
+    <span class="eyebrow">Protocolo</span>
+    <h1>O que sustenta o plano.</h1>
+    <p>Timing, suplementação e princípios — adaptados para treino noturno e gasto físico alto.</p>
+  </div>
+  <h2 class="blk">Timing nutricional · treino à noite</h2>
+  <div class="c3">
+    <div class="ic"><div class="i">🌅</div><h4>Manhã p/ o trabalho</h4><p>Café denso em proteína + carbo. Você gasta energia em pé a manhã toda — não saia subalimentado.</p></div>
+    <div class="ic"><div class="i">🌞</div><h4>Pré-treino · 17h</h4><p><b>2h antes:</b> sólido com carbo complexo + proteína. <b>45min antes:</b> banana ou mel.</p></div>
+    <div class="ic"><div class="i">🌙</div><h4>Pós-treino · 21h</h4><p><b>Janela de 45min:</b> whey + carbo rápido. Síntese proteica no pico. Não pule.</p></div>
+    <div class="ic"><div class="i">🌜</div><h4>Antes de dormir</h4><p>Proteína de digestão lenta (cottage, iogurte). Alimenta o músculo durante o sono.</p></div>
+  </div>
+  <h2 class="blk">Suplementação · base do perfil</h2>
+  <div class="c3">
+    <div class="ic"><div class="i">🥛</div><h4>Whey Protein</h4><div class="dose">30–40g · 2×/dia</div><p>Pós-treino e/ou manhã. Base para chegar aos 195g/dia sem depender só de carne.</p></div>
+    <div class="ic"><div class="i">⚡</div><h4>Creatina</h4><div class="dose">5g · todo dia</div><p>Qualquer horário, com refeição. Força, volume e recuperação. A mais validada.</p></div>
+    <div class="ic"><div class="i">☀️</div><h4>Vitamina D3 + K2</h4><div class="dose">4.000 UI + 100 mcg</div><p>Com refeição gordurosa. Hormônios, imunidade e absorção de cálcio.</p></div>
+    <div class="ic"><div class="i">🐟</div><h4>Ômega-3</h4><div class="dose">2–3g EPA+DHA/dia</div><p>Anti-inflamatório. Recupera músculo e articulações.</p></div>
+    <div class="ic"><div class="i">🧴</div><h4>Magnésio</h4><div class="dose">300–400mg · noite</div><p>Trabalho + cardio diário drenam magnésio. Melhora sono e relaxa o músculo.</p></div>
+    <div class="ic"><div class="i">💧</div><h4>Hidratação</h4><div class="dose">4–4,5 L/dia</div><p>Você sua no trabalho e no treino. Eletrólitos nos dias de corrida.</p></div>
+  </div>
+  <h2 class="blk">Princípios</h2>
+  <div class="c3">
+    <div class="ic"><div class="i">🍽️</div><h4>5–6 refeições/dia</h4><p>Distribuir mantém energia constante no trabalho e anabolismo o dia todo.</p></div>
+    <div class="ic"><div class="i">💪</div><h4>Proteína sempre</h4><p>30g+ por refeição principal. Animal e vegetal alternando.</p></div>
+    <div class="ic"><div class="i">🥗</div><h4>Metade do prato verde</h4><p>Fibras e micronutrientes que sustentam recuperação e energia.</p></div>
+    <div class="ic"><div class="i">🌱</div><h4>Combine vegetais</h4><p>Feijão + arroz, lentilha + quinoa: proteína vegetal completa.</p></div>
+  </div>
+  <div class="endnote">
+    <span class="et">Uma palavra final.</span>
+    Calculado a partir dos seus dados reais — <b>86kg, 1,87m, 32 anos</b> — e do seu gasto verdadeiro: pintura cinco dias por semana, musculação à noite, cardio diário e corrida longa no sábado. As metas seguem diretrizes da <b>ISSN</b> para recomposição corporal. Os números são ponto de partida, não sentença: <b>seu corpo é o instrumento de medição final</b>. Pese-se semanalmente, observe a energia, ajuste a cada quatro semanas. Para afinar suplementos e exames, vale um nutricionista esportivo.
+  </div>
+</div>
+
+</div>
+
+<script>
+function nav(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nlink').forEach(l=>l.classList.remove('on'));
+  document.getElementById(id).classList.add('on'); btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function mac(id,btn){
+  document.querySelectorAll('.mpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('#overview .tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on'); btn.classList.add('on');
+}
+function day(id,el){
+  document.querySelectorAll('.dpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ds').forEach(d=>d.classList.remove('on'));
+  document.getElementById(id).classList.add('on'); el.classList.add('on');
+}
+function tog(r){r.classList.toggle('done');prog();}
+function prog(){
+  const a=document.querySelectorAll('.si2'),d=document.querySelectorAll('.si2.done');
+  document.getElementById('pbar').style.width=(a.length?Math.round(d.length/a.length*100):0)+'%';
+  document.getElementById('ptext').textContent=d.length+' / '+a.length;
+}
+prog();
+
+/* ════════ CHECK-IN ════════ */
+const USER="Jairo";
+
+// Refeições do plano por dia da semana (0=Dom). Horário em minutos.
+const SCHED={
+ 1:[["04:50","Desjejum","Chá de limão com xarope de gengibre","desj"],["06:20","Tigela de força + ovos","Iogurte grego (200g) · granola s/ glúten · banana · pasta de amendoim · chia + 2 ovos","cafe"],["09:15","Combustível de obra","Pão de arroz (3 fatias) · ½ abacate · ovos · tomate","lanche"],["11:45","Frango, arroz integral & legumes","Frango (180g) · arroz integral · brócolis · cenoura · espinafre","almoco"],["17:45","Batata-doce + frango + banana","Batata-doce (220g) · frango (120g) · banana 45min antes","pre"],["19:20","Shake de recuperação","Whey (40g) · aveia s/ glúten · leite · banana · cacau","pos"],["19:30","Salmão & legumes verdes","Salmão (180g) · abobrinha · aspargos · alho · azeite","jantar"]],
+ 2:[["04:50","Desjejum","Chá de limão com xarope de gengibre","desj"],["06:20","Panqueca de banana s/ glúten","2 bananas · 3 ovos · farinha de arroz · cacau · mel · frutas vermelhas","cafe"],["09:15","Mix de energia","Castanhas (40g) · queijo cottage · maçã · canela","lanche"],["11:45","Lentilha ao curry com quinoa","Lentilha vermelha · quinoa · leite de coco · curry · couve","almoco"],["15:30","Tapioca proteica","Tapioca · frango desfiado (120g) · queijo minas · rúcula","lanche"],["19:30","Omelete grande de vegetais","4 ovos · espinafre · cogumelos · pimentão · queijo minas","jantar"],["21:25","Ceia proteica","Iogurte grego (200g) · chia · castanha-do-pará · mel","ceia"]],
+ 3:[["04:50","Desjejum","Chá de limão com xarope de gengibre","desj"],["06:20","Açaí bowl proteico","Açaí puro · whey · granola s/ glúten · banana · morangos","cafe"],["09:15","Ovos + pão de arroz","3 ovos · pão de arroz · abacate · tomate · sal rosa","lanche"],["11:45","Atum, quinoa & salada","Atum (2 latas) · quinoa · rúcula · tomate · pepino · azeite","almoco"],["17:45","Arroz, frango & batata-doce","Arroz integral · frango (150g) · batata-doce · legumes","pre"],["19:20","Shake tropical","Whey (40g) · manga · aveia s/ glúten · leite de amêndoas · cúrcuma","pos"],["19:30","Tilápia com purê de ervilha","Tilápia (200g) · purê de ervilha · aspargos · alho · limão","jantar"]],
+ 4:[["04:50","Desjejum","Chá de limão com xarope de gengibre","desj"],["06:20","Ovos, pão de arroz & abacate","3 ovos mexidos · pão de arroz · ½ abacate · tomate","cafe"],["09:15","Iogurte, frutas & nuts","Iogurte grego · frutas vermelhas · nozes · chia · mel","lanche"],["11:45","Feijão preto, frango & couve","Feijão preto · arroz integral · frango desfiado · couve · abóbora","almoco"],["15:30","Smoothie verde proteico","Espinafre · whey · abacaxi · leite de coco · gengibre","lanche"],["19:30","Sopa creme de abóbora & frango","Abóbora · frango desfiado · leite de coco · cúrcuma · gengibre","jantar"],["21:25","Ceia rápida","Cottage (150g) · chia · kiwi · castanha-do-pará","ceia"]],
+ 5:[["04:50","Desjejum","Chá de limão com xarope de gengibre","desj"],["06:20","Bowl de força — sexta","Iogurte grego · granola s/ glúten · manga · banana · pasta de amendoim · chia","cafe"],["09:15","Whey, aveia & frutas","Whey (35g) · aveia s/ glúten · leite · morango · banana","lanche"],["11:45","Grão-de-bico, salmão & quinoa","Grão-de-bico assado · salmão (150g) · quinoa · espinafre","almoco"],["17:45","Batata-doce, ovos & banana","Batata-doce (220g) · 3 ovos · banana · mel","pre"],["19:20","Shake de morango & aveia","Whey (40g) · morango · aveia s/ glúten · leite · mel","pos"],["19:30","Camarão & arroz integral","Camarão (200g) · arroz integral · pimentão · tamari · gergelim","jantar"]],
+ 6:[["06:30","Carbo leve e rápido (pré-corrida)","2 bananas · tapioca com mel · água de coco · sal rosa","pre"],["09:00","Recuperação imediata","Whey (40g) · aveia s/ glúten · banana · leite · mel · água de coco","pos"],["11:00","Ovos, batata-doce & frutas","4 ovos · batata-doce (250g) · abacate · frutas vermelhas · granola","cafe"],["14:00","Moqueca de salmão com arroz","Salmão (200g) · leite de coco · pimentão · tomate · arroz integral","almoco"],["17:00","Shake de recuperação tardia","Whey (30g) · manga · leite de coco · chia · mel","lanche"],["19:30","Pizza de tapioca proteica","Base de tapioca · frango desfiado · queijo · tomate · rúcula","jantar"]],
+ 0:[["08:00","Café de domingo, sem pressa","Omelete (3 ovos) · queijo minas · tomate · pão de arroz · abacate · café","cafe"],["11:00","Frutas, castanhas & iogurte","Iogurte grego · uvas · nozes · mel · hortelã","lanche"],["13:00","Frango assado, feijão & arroz","Coxa de frango assada · feijão · arroz integral · couve · farofa · laranja","almoco"],["16:00","Shake de recuperação semanal","Whey (35g) · banana · leite · aveia s/ glúten · canela","lanche"],["20:00","Sopa de lentilha com frango","Lentilha · frango desfiado · cenoura · aipo · cúrcuma · coentro","jantar"],["21:25","Ceia proteica","Cottage (150g) · chia · kiwi · castanha-do-pará","ceia"]]
+};
+
+const FEELS=[
+ {id:"fadiga",i:"💪",t:"Fadiga muscular"},
+ {id:"cansaco",i:"🪫",t:"Cansaço / sem energia"},
+ {id:"sono",i:"😴",t:"Sono / mente lenta"},
+ {id:"estresse",i:"😣",t:"Estresse / tensão"},
+ {id:"fome",i:"🍫",t:"Fome / vontade de doce"}
+];
+
+// Explicação fisiológica curta por fator
+const WHY={
+ fadiga:"A <b>proteína</b> desta refeição entrega aminoácidos que reparam a fibra muscular; o carboidrato repõe o glicogênio gasto. A fadiga cede em 30–60 min.",
+ cansaco:"O <b>carboidrato</b> aqui repõe glicose no sangue — combustível direto pro cérebro e músculo. A energia volta a subir rápido.",
+ sono:"Proteína + carboidrato estabilizam a glicose e cortam o pico de sonolência. Evita a queda que te deixa lento.",
+ estresse:"Magnésio e gorduras boas baixam o cortisol; o carboidrato ajuda a liberar serotonina, acalmando sem te derrubar.",
+ fome:"<b>Proteína sacia mais que qualquer coisa</b> e estabiliza o açúcar no sangue — é o que apaga a vontade de doce em vez de alimentá-la."
+};
+
+let ciSel=new Set();
+
+function curMeal(){
+ const now=new Date(), day=now.getDay(), mins=now.getHours()*60+now.getMinutes();
+ const meals=SCHED[day];
+ // refeição "ativa": de 40min antes até 30min depois do horário
+ for(const m of meals){
+   const [h,mm]=m[0].split(":").map(Number); const t=h*60+mm;
+   if(mins>=t-40 && mins<=t+30) return {m,day,soon:mins<t};
+ }
+ // fora de janela: pega a próxima do dia, senão a primeira de amanhã
+ for(const m of meals){const [h,mm]=m[0].split(":").map(Number);if(h*60+mm>mins)return{m,day,next:true};}
+ return {m:meals[0],day,next:true};
+}
+
+function isDue(){
+ const now=new Date(), mins=now.getHours()*60+now.getMinutes();
+ for(const m of SCHED[now.getDay()]){const[h,mm]=m[0].split(":").map(Number);const t=h*60+mm;if(mins>=t-40&&mins<t)return true;}
+ return false;
+}
+
+function refreshBell(){document.getElementById("ciBell").classList.toggle("due",isDue());}
+
+function openCheckin(){
+ ciSel.clear();
+ const info=curMeal(), m=info.m;
+ const hr=new Date().getHours();
+ const sd=hr<12?"Bom dia":hr<18?"Boa tarde":"Boa noite";
+ document.getElementById("ciGreet").textContent=`${sd}, ${USER}`;
+ document.getElementById("ciWhen").textContent = info.soon ? `Daqui a pouco · ${m[0]} ${m[1]}` : info.next ? `Próxima refeição · ${m[0]}` : `Agora · ${m[0]} ${m[1]}`;
+ document.getElementById("ciQ").innerHTML="Como está se sentindo agora? <b>Pode marcar mais de um.</b>";
+ const fc=document.getElementById("ciFeels"); fc.innerHTML="";
+ FEELS.forEach(f=>{
+   const el=document.createElement("div"); el.className="feel"; el.dataset.id=f.id;
+   el.innerHTML=`<span class="fi">${f.i}</span><span class="ft">${f.t}</span><span class="fc"></span>`;
+   el.onclick=()=>{el.classList.toggle("sel");el.classList.contains("sel")?ciSel.add(f.id):ciSel.delete(f.id);document.getElementById("ciGo").disabled=ciSel.size===0;};
+   fc.appendChild(el);
+ });
+ document.getElementById("ciGo").disabled=true;
+ document.getElementById("ciStep1").style.display="block";
+ document.getElementById("ciStep2").style.display="none";
+ document.getElementById("ciOverlay").classList.add("on");
+}
+function closeCheckin(){document.getElementById("ciOverlay").classList.remove("on");}
+
+function showSuggestion(){
+ const info=curMeal(), m=info.m;
+ const whenTxt = info.next ? `Sua próxima refeição · ${m[0]}` : `Refeição de agora · ${m[0]}`;
+ // monta explicações dos fatores selecionados (sem repetir)
+ let reasons=[...ciSel].map(id=>WHY[id]);
+ // dica extra se marcou vontade de doce
+ let extra = ciSel.has("fome") ? `<p><b>Se a vontade insistir:</b> banana com pasta de amendoim ou um quadrado de chocolate 70%+ resolvem sem quebrar o plano.</p>` : "";
+ const items=m[2];
+ document.getElementById("ciStep2").innerHTML=`
+   <div class="ci-meal-card">
+     <div class="ci-meal-when">${whenTxt}</div>
+     <div class="ci-meal-name">${m[1]}</div>
+     <div class="ci-meal-items">${items.replace(/(\d+[gml%]+|\d+ \w+|½)/g,'<em>$1</em>')}</div>
+   </div>
+   <div class="ci-why">
+     <h5>Como isso age no seu corpo agora</h5>
+     ${reasons.map(r=>`<p>${r}</p>`).join("")}
+     ${extra}
+   </div>
+   <button class="ci-back" onclick="backToFeels()">← Marcar outros sintomas</button>`;
+ document.getElementById("ciStep1").style.display="none";
+ document.getElementById("ciStep2").style.display="block";
+}
+function backToFeels(){document.getElementById("ciStep1").style.display="block";document.getElementById("ciStep2").style.display="none";}
+
+refreshBell();
+setInterval(refreshBell,60000);
+
+/* ════════ PWA ════════ */
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{/* offline ok */});
+  });
+}
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault(); deferredPrompt=e;
+  document.getElementById('pwaInstall').classList.add('show');
+});
+function installPWA(){
+  if(!deferredPrompt){
+    alert("Para instalar:\n\niPhone (Safari): toque em Compartilhar ⬆ e depois 'Adicionar à Tela de Início'.\n\nAndroid (Chrome): toque no menu ⋮ e depois 'Instalar app' ou 'Adicionar à tela inicial'.");
+    return;
+  }
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.finally(()=>{deferredPrompt=null;document.getElementById('pwaInstall').classList.remove('show');});
+}
+window.addEventListener('appinstalled',()=>{document.getElementById('pwaInstall').classList.remove('show');});
+
+/* ════════ MODO DE PREPARO (BATCH) ════════ */
+const RECIPES={
+ graos:{tag:"Domingo · 45 min",title:"Grãos",sub:"Arroz, quinoa, lentilha e feijão — a base de carboidrato e proteína da semana.",
+  steps:[
+   "<b>Lave</b> o arroz e a quinoa em água corrente numa peneira, até a água sair limpa. Isso tira o amido que gruda.",
+   "<b>Arroz integral:</b> para cada 1 xícara de arroz, use 2,5 de água. Ferva, abaixe o fogo, tampe e cozinhe ~25 min até secar.",
+   "<b>Quinoa:</b> 1 xícara para 2 de água. Ferva, abaixe, tampe ~15 min. Fica pronta quando aparece um \"fiozinho\" em volta do grão.",
+   "<b>Lentilha vermelha:</b> não precisa deixar de molho. Cozinhe em água por ~15 min até amolecer. Escorra.",
+   "<b>Feijão preto:</b> deixe de molho na água na noite anterior. Cozinhe na panela de pressão com água cobrindo 2 dedos acima, ~25 min depois de pegar pressão."
+  ],
+  note:"<b>Atalho:</b> coloque as 4 panelas no fogo ao mesmo tempo. Enquanto cozinham, você adianta as outras estações. Tempere com sal, alho e um fio de azeite no fim."},
+
+ forno:{tag:"Domingo · 40 min",title:"Forno",sub:"Batata-doce, grão-de-bico e legumes assados de uma vez só.",
+  steps:[
+   "Ligue o forno em <b>200°C</b> para pré-aquecer (uns 10 min).",
+   "<b>Corte</b> a batata-doce, cenoura, abobrinha e abóbora em cubos médios (do tamanho de uma castanha).",
+   "<b>Escorra</b> o grão-de-bico da lata e seque com papel toalha — assim fica crocante.",
+   "Espalhe tudo numa assadeira grande, sem amontoar. Regue com <b>azeite</b>, sal, e curry no grão-de-bico.",
+   "Asse por <b>35–40 min</b>, virando na metade do tempo com uma colher para dourar dos dois lados."
+  ],
+  note:"<b>Dica:</b> se não couber tudo numa assadeira, use duas. Legume amontoado cozinha no vapor em vez de assar — e aí não fica douradinho."},
+
+ proteinas:{tag:"Domingo · 30 min",title:"Proteínas",sub:"Frango, salmão e ovos — sua proteína pronta para vários dias.",
+  steps:[
+   "<b>Tempere o frango</b> antes: sal, alho amassado, suco de limão e ervas. Deixe pegar gosto uns 10 min.",
+   "<b>Grelhe o frango</b> numa frigideira quente com um fio de azeite, ~6 min de cada lado, até não ficar rosado no meio. Depois desfie com dois garfos.",
+   "<b>Salmão:</b> tempere com sal e limão. Grelhe ~4 min de cada lado, começando pelo lado da pele. Guarde inteiro.",
+   "<b>Ovos cozidos:</b> coloque numa panela com água fria cobrindo, ferva e conte <b>9 min</b>. Passe na água gelada para descascar fácil."
+  ],
+  note:"<b>Validade:</b> proteínas cozidas duram até 4 dias na geladeira em potes fechados. O salmão você desmancha só na hora de comer, pra não ressecar."},
+
+ bases:{tag:"Domingo · 20 min",title:"Bases e Molhos",sub:"Molho de tomate e caldo de frango caseiros — sabor pra semana toda.",
+  steps:[
+   "<b>Molho de tomate:</b> refogue alho e cebola picados no azeite, junte tomate picado (ou passata), sal e manjericão. Cozinhe ~15 min em fogo baixo.",
+   "<b>Caldo de frango:</b> ferva as aparas/ossos do frango com cenoura, cebola e uma folha de louro em água por ~20 min. Coe e guarde o líquido.",
+   "<b>Finalize a lentilha:</b> junte a lentilha já cozida com leite de coco e curry, mexa 5 min — vira um curry cremoso."
+  ],
+  note:"<b>Truque de chef:</b> congele o caldo de frango em forminhas de gelo. Dura 1 mês e você usa cubos avulsos para a sopa de quinta sem desperdício."},
+
+ lanches:{tag:"Domingo · 15 min",title:"Lanches",sub:"Porcionar antecipado — o segredo pra não cair na tentação fora de hora.",
+  steps:[
+   "<b>Castanhas:</b> separe porções de ~40g em 3 saquinhos ou potinhos. Porção controlada evita comer o pacote inteiro.",
+   "<b>Frutas:</b> lave e seque bem todas. Guarde secas, em pote — duram mais e ficam prontas pra pegar.",
+   "<b>Iogurte:</b> divida em potes individuais de ~200g, já com a granola separada (junte só na hora pra não murchar).",
+   "<b>Mix granola + chia:</b> misture num pote só, pronto pra jogar no iogurte ou na fruta."
+  ],
+  note:"<b>Psicologia que funciona:</b> o que está pronto e visível é o que você come. Deixe o saudável na altura dos olhos da geladeira."},
+
+ organizar:{tag:"Domingo · 10 min",title:"Organizar a Geladeira",sub:"O passo que faz o resto da semana fluir sem pensar.",
+  steps:[
+   "<b>Prateleira de cima:</b> proteínas prontas (frango, salmão, ovos). Mais visíveis = mais usadas.",
+   "<b>Prateleira do meio:</b> grãos cozidos em potes transparentes.",
+   "<b>Prateleira de baixo:</b> legumes assados e frescos.",
+   "<b>Gaveta:</b> lanches porcionados e frutas lavadas.",
+   "<b>Etiquete</b> a data em cada pote com fita crepe e caneta."
+  ],
+  note:"<b>Regra de validade:</b> proteínas duram 4 dias, grãos 5 dias. O que passar disso, congele em vez de jogar fora."},
+
+ graosnovos:{tag:"Quarta · 35 min",title:"Grãos Novos",sub:"Reabastecer arroz, quinoa e grão-de-bico para a 2ª metade da semana.",
+  steps:[
+   "Mesma técnica do domingo, só que em menor quantidade. Você já pegou o jeito.",
+   "<b>Arroz e quinoa:</b> lave, ferva, abaixe o fogo e tampe (arroz ~25 min, quinoa ~15 min).",
+   "<b>Grão-de-bico:</b> escorra a lata, seque, tempere com azeite e curry, e asse 35 min a 200°C.",
+   "Ponha os grãos pra cozinhar primeiro — enquanto isso, adiante as proteínas."
+  ],
+  note:"<b>Por que de novo:</b> grãos cozidos rendem ~5 dias. Cozinhar 2x na semana mantém tudo sempre fresco, sem comer coisa velha."},
+
+ legumes:{tag:"Quarta · 25 min",title:"Legumes",sub:"Legumes frescos e a abóbora da sopa de quinta.",
+  steps:[
+   "<b>Batata-doce:</b> corte em cubos e asse a 200°C por ~35 min (pode ir junto com a coxa de frango).",
+   "<b>Brócolis e abobrinha:</b> cozinhe no vapor ou numa panela com pouca água por ~5 min — devem ficar firmes, não moles.",
+   "<b>Abóbora p/ sopa:</b> cozinhe em pedaços com o caldo de frango congelado do domingo até amolecer, depois bata no liquidificador.",
+   "<b>Aspargos:</b> mergulhe na água fervente por 2 min e tire (branquear) — ficam verdes e crocantes."
+  ],
+  note:"<b>Ponto certo:</b> legume bom é o que ainda tem uma leve resistência ao garfo. Cozido demais perde nutriente e fica sem graça."},
+
+ kitsabado:{tag:"Quarta · 15 min",title:"Kit Sábado (Corrida)",sub:"Deixar tudo pronto pra manhã da corrida longa. Zero decisão às 6h30.",
+  steps:[
+   "<b>Separe 2 bananas</b> num ponto visível da fruteira.",
+   "<b>Tapioca:</b> deixe a goma hidratada num pote, pronta pra ir na frigideira (2 min) na hora.",
+   "<b>Whey:</b> já meça a dose num potinho fechado — é só misturar com água/leite depois de correr.",
+   "<b>Água de coco</b> gelando na geladeira."
+  ],
+  note:"<b>Por que importa:</b> de manhã cedo, antes de correr, ninguém quer pensar. Tudo separado na quarta = você só pega e usa."}
+};
+
+function openRecipe(key){
+ const r=RECIPES[key]; if(!r) return;
+ const stepsHtml=r.steps.map((t,i)=>`<div class="rc-step"><div class="num">${i+1}</div><div class="txt">${t}</div></div>`).join("");
+ document.getElementById("rcBody").innerHTML=`
+   <div class="rc-tag">${r.tag}</div>
+   <div class="rc-title">${r.title}</div>
+   <div class="rc-sub">${r.sub}</div>
+   <div class="rc-block"><h5>Passo a passo</h5>${stepsHtml}</div>
+   <div class="rc-note">${r.note}</div>`;
+ document.getElementById("rcOverlay").classList.add("on");
+}
+function closeRecipe(){document.getElementById("rcOverlay").classList.remove("on");}
+document.getElementById("rcOverlay").addEventListener("click",e=>{if(e.target.id==="rcOverlay")closeRecipe();});
+// abre automaticamente se estiver na janela de 40min antes de uma refeição (1x por refeição)
+(function autoOpen(){
+ if(isDue()){
+   const info=curMeal(); const key="ci_"+new Date().toDateString()+"_"+info.m[0];
+   try{ if(sessionStorage.getItem(key)!=="1"){ sessionStorage.setItem(key,"1"); setTimeout(openCheckin,600);} }catch(e){}
+ }
+})();
+</script>
+</body>
+</html>
