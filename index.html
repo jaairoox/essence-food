@@ -948,7 +948,7 @@ h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercas
       <div class="bh-label">Configurar chave de API Gemini</div>
       <p style="font-size:13.5px;color:var(--text2);margin-bottom:16px;">Para ler notas por foto. Gratuito — acesse <b style="color:var(--text)">aistudio.google.com/apikey</b>, crie uma chave e cole aqui. Fica salva só neste dispositivo, nunca vai ao GitHub.</p>
       <div class="rcpt-key-wrap">
-        <input type="password" id="geminiKeyInput" placeholder="AIza... (chave do Google AI Studio)" autocomplete="off">
+        <input type="password" id="geminiKeyInput" placeholder="AQ.Ab8... (chave do Google AI Studio)" autocomplete="off">
         <button class="budget-calc-btn" onclick="saveGeminiKey()">Salvar</button>
       </div>
     </div>
@@ -1412,7 +1412,7 @@ REGRAS:
     if(!resp.ok){
       const err=await resp.json().catch(()=>({}));
       const msg=err.error?.message||`HTTP ${resp.status}`;
-      ri.innerHTML=`<div class="mode-info" style="border-left-color:var(--clay);color:var(--clay);">❌ Erro na API: ${msg}<br><span style="font-size:12px;">Verifique se a chave está correta (deve começar com AIza...).</span></div>`;
+      ri.innerHTML=`<div class="mode-info" style="border-left-color:var(--clay);color:var(--clay);">❌ Erro na API: ${msg}<br><span style="font-size:12px;">Verifique se a chave está correta e se o modelo Gemini está disponível na sua conta.</span></div>`;
       ri.style.display='block'; return;
     }
     const data=await resp.json();
