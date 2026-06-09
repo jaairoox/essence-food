@@ -270,6 +270,66 @@ h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercas
 .pwa-install:hover{background:var(--green);color:var(--bg);}
 .pwa-install.show{display:inline-flex;}
 
+/* MODO DO DIA */
+.modo-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:18px;}
+.modo-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px;gap:3px;}
+.mdo{font-size:13px;font-weight:600;color:var(--text3);padding:8px 15px;border:none;background:none;border-radius:7px;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap;}
+.mdo:hover{color:var(--text);}
+.mdo.on{background:var(--green);color:var(--bg);}
+.mdo.amber.on{background:var(--amber);color:var(--bg);}
+.mdo.clay.on{background:var(--clay);color:var(--bg);}
+#cardapio.notreino .meal:has(.mtag.pre),#cardapio.notreino .meal:has(.mtag.pos){display:none;}
+.mode-info{background:rgba(224,177,92,.08);border:1px solid rgba(224,177,92,.25);border-left:3px solid var(--amber);border-radius:10px;padding:14px 18px;margin-bottom:14px;font-size:13.5px;color:var(--text2);}
+.mode-info b{color:var(--text);}
+/* COMPRAS MODO */
+.budget-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px;}
+.bdg-opt{font-size:13px;font-weight:600;color:var(--text3);padding:8px 16px;border:1.5px solid var(--line);border-radius:9px;cursor:pointer;background:var(--card);font-family:inherit;transition:.15s;}
+.bdg-opt:hover{border-color:var(--line2);color:var(--text);}
+.bdg-opt.on{border-color:var(--green);color:var(--green);background:rgba(108,194,138,.08);}
+.slist{display:none;}
+.slist.on{display:block;}
+/* MOCHILA */
+.mochi-day{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px;}
+.mochi-h{padding:16px 22px;background:var(--card2);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;}
+.mochi-h .mday{font-size:17px;font-weight:800;letter-spacing:-.3px;}
+.mochi-h .mtype{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);margin-left:auto;}
+.mochi-b{padding:6px 22px 14px;}
+.mochi-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);}
+.mochi-item:last-child{border:none;}
+.mochi-time{min-width:52px;font-size:13px;font-weight:700;color:var(--green);padding-top:2px;}
+.mochi-meal{flex:1;}
+.mochi-mname{font-size:14px;font-weight:600;margin-bottom:3px;}
+.mochi-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+.mtag2{font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px;}
+.mtag2.cold{background:rgba(106,168,216,.15);color:var(--blue);}
+.mtag2.safe{background:rgba(108,194,138,.15);color:var(--green);}
+.mtag2.fast{background:rgba(224,138,94,.15);color:var(--clay);}
+.mtag2.marmita{background:rgba(224,177,92,.15);color:var(--amber);}
+.mochi-note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0 22px 16px;font-size:13px;color:var(--text2);line-height:1.65;}
+.mochi-note b{color:var(--text);}
+/* SEMANA */
+.budget-hero{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-bottom:26px;}
+.bh-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:12px;}
+.budget-input-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.budget-prefix{font-size:28px;font-weight:800;color:var(--green);}
+.budget-field{font-size:24px;font-weight:800;color:var(--text);background:var(--card);border:2px solid var(--line);border-radius:10px;padding:10px 16px;width:150px;font-family:inherit;outline:none;transition:.2s;}
+.budget-field:focus{border-color:var(--green);}
+.budget-calc-btn{padding:12px 22px;background:var(--green);color:var(--bg);border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;}
+.budget-calc-btn:hover{background:var(--green-d);}
+.budget-result{display:none;margin-top:4px;}
+.budget-result.on{display:block;animation:fade .3s both;}
+.bres-title{font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+.ph-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;}
+.ph-row:last-child{border:none;}
+.ph-date{color:var(--text3);min-width:90px;}
+.ph-val{font-weight:700;color:var(--green);}
+.ph-empty{color:var(--text3);font-size:13px;padding:12px 0;}
+.price-entry{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.price-entry input{flex:1;min-width:140px;background:var(--card);border:1.5px solid var(--line);border-radius:8px;padding:9px 14px;font-size:14px;font-family:inherit;color:var(--text);outline:none;}
+.price-entry input:focus{border-color:var(--green);}
+.price-entry button{padding:9px 18px;background:var(--card);border:1.5px solid var(--line);border-radius:8px;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;}
+.price-entry button:hover{border-color:var(--green);color:var(--green);}
+
 /* clickable step cards */
 .step.click{cursor:pointer;position:relative;}
 .step.click:hover{border-color:var(--green);}
@@ -332,6 +392,8 @@ h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercas
   <button class="nlink" onclick="nav('batch',this)">Batch</button>
   <button class="nlink" onclick="nav('montagem',this)">Montagem</button>
   <button class="nlink" onclick="nav('protocolo',this)">Protocolo</button>
+  <button class="nlink" onclick="nav('mochila',this)">Mochila</button>
+  <button class="nlink" onclick="nav('semana',this)">Semana</button>
 </div></div>
 
 <div class="wrap">
@@ -409,6 +471,16 @@ h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercas
     <h1>Sete dias, montados.</h1>
     <p>Refeições calibradas para o gasto de cada dia. Musculação às segundas, quartas e sextas à noite.</p>
   </div>
+
+  <div class="modo-wrap">
+    <span class="modo-label" style="font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);">Modo do dia</span>
+    <div class="modo-toggle">
+      <button class="mdo on" onclick="setMode('treino',this)">💪 Treino</button>
+      <button class="mdo amber" onclick="setMode('semtreino',this)">😴 Sem treino</button>
+      <button class="mdo clay" onclick="setMode('corrida',this)">🏃 Corrida</button>
+    </div>
+  </div>
+  <div class="mode-info" id="modeInfoBanner" style="display:none;"></div>
 
   <div class="dsel">
     <div class="ds on" onclick="day('d-seg',this)"><span class="d">Seg</span><span class="t">trab+musc</span></div>
@@ -509,8 +581,14 @@ h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercas
     <h1>A lista, de uma vez.</h1>
     <p>Tudo para sete dias. Toque nos itens enquanto enche o carrinho. Os com ⭐ são insubstituíveis.</p>
   </div>
-  <div class="smeta"><p>Compra para <b>1 pessoa, 1 semana</b>. Porções dimensionadas para o gasto elevado dos dias de trabalho + treino.</p><div class="stot"><div class="v">~R$410</div><div class="l">estimativa semanal</div></div></div>
+  <div class="budget-bar">
+    <span style="font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--text3);">Orçamento</span>
+    <button class="bdg-opt on" onclick="toggleBudget('full',this)">Semana Completa ~R$410</button>
+    <button class="bdg-opt" onclick="toggleBudget('slim',this)">Essencial ~R$210</button>
+  </div>
   <div class="pwrap"><div class="ptop"><span>PROGRESSO</span><span id="ptext">0 / 0</span></div><div class="ptrack"><div class="pbar" id="pbar"></div></div></div>
+  <div id="slist-full" class="slist on">
+  <div class="smeta"><p>Compra para <b>1 pessoa, 1 semana</b>. Porções dimensionadas para o gasto elevado dos dias de trabalho + treino.</p><div class="stot"><div class="v">~R$410</div><div class="l">estimativa semanal</div></div></div>
   <div class="scols">
     <div class="scat"><div class="scat-h"><span class="i">🍗</span><span class="t">Proteínas Animais</span><span class="c">9</span></div><div class="scat-b">
       <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Peito de frango<span class="st">⭐</span></span><span class="q">1,8 kg</span></div>
@@ -602,6 +680,51 @@ h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercas
       <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Laranja</span><span class="q">7 unid</span></div>
     </div></div>
   </div>
+  </div><!-- /slist-full -->
+  <div id="slist-slim" class="slist">
+  <div class="smeta"><p>Lista <b>essencial para R$210</b>. Sem whey, sem salmão. Proteína garantida por frango, atum e ovos. Funcional e completo.</p><div class="stot"><div class="v">~R$195</div><div class="l">estimativa semanal</div></div></div>
+  <div class="scols">
+    <div class="scat"><div class="scat-h"><span class="i">🍗</span><span class="t">Proteínas</span><span class="c">4</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Peito de frango<span class="st">⭐</span></span><span class="q">1 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Atum natural<span class="st">⭐</span></span><span class="q">4 latas</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Ovos<span class="st">⭐</span></span><span class="q">24 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Queijo cottage<span class="st">⭐</span></span><span class="q">300 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🌾</span><span class="t">Grãos & Carbos</span><span class="c">5</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Arroz integral<span class="st">⭐</span></span><span class="q">1 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Feijão preto<span class="st">⭐</span></span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Lentilha<span class="st">⭐</span></span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Tapioca (goma)<span class="st">⭐</span></span><span class="q">400 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Aveia s/ glúten<span class="st">⭐</span></span><span class="q">300 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🥦</span><span class="t">Hortifruti</span><span class="c">8</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Banana<span class="st">⭐</span></span><span class="q">12 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Batata-doce<span class="st">⭐</span></span><span class="q">1,5 kg</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Couve-manteiga<span class="st">⭐</span></span><span class="q">1 maço</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Cenoura</span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Tomate</span><span class="q">500 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Abacate</span><span class="q">2 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Limão<span class="st">⭐</span></span><span class="q">8 unid</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Alho+Cebola+Gengibre<span class="st">⭐</span></span><span class="q">kit</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🥛</span><span class="t">Laticínios</span><span class="c">1</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Iogurte grego integral<span class="st">⭐</span></span><span class="q">400 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🫒</span><span class="t">Gorduras</span><span class="c">2</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Azeite extravirgem<span class="st">⭐</span></span><span class="q">250 ml</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Pasta de amendoim<span class="st">⭐</span></span><span class="q">250 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">🌿</span><span class="t">Temperos</span><span class="c">4</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Curry em pó<span class="st">⭐</span></span><span class="q">50 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Cúrcuma<span class="st">⭐</span></span><span class="q">50 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Mel puro<span class="st">⭐</span></span><span class="q">200 g</span></div>
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Cacau em pó 100%<span class="st">⭐</span></span><span class="q">100 g</span></div>
+    </div></div>
+    <div class="scat"><div class="scat-h"><span class="i">💊</span><span class="t">Suplemento</span><span class="c">1</span></div><div class="scat-b">
+      <div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">Creatina monohidratada<span class="st">⭐</span></span><span class="q">150 g</span></div>
+    </div></div>
+  </div>
+  </div><!-- /slist-slim -->
 </div>
 
 <!-- BATCH -->
@@ -715,6 +838,92 @@ h2.blk{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercas
   <div class="endnote">
     <span class="et">Uma palavra final.</span>
     Calculado a partir dos seus dados reais — <b>86kg, 1,87m, 32 anos</b> — e do seu gasto verdadeiro: pintura cinco dias por semana, musculação à noite, cardio diário e corrida longa no sábado. As metas seguem diretrizes da <b>ISSN</b> para recomposição corporal. Os números são ponto de partida, não sentença: <b>seu corpo é o instrumento de medição final</b>. Pese-se semanalmente, observe a energia, ajuste a cada quatro semanas. Para afinar suplementos e exames, vale um nutricionista esportivo.
+  </div>
+</div>
+
+<!-- MOCHILA -->
+<div id="mochila" class="sec">
+  <div class="head">
+    <span class="eyebrow">Mochila</span>
+    <h1>Saiu de casa,<br>tá tudo <span class="g">aqui.</span></h1>
+    <p>Você vai direto da obra pra academia. Esta seção mostra o que preparar e levar para cada tipo de dia — sem improvisação e sem voltar pra casa.</p>
+  </div>
+  <div class="callout" style="border-left-color:var(--amber);">
+    <div class="tag" style="color:var(--amber);">Regra de ouro</div>
+    <h3>Prepare na véspera, nunca na manhã</h3>
+    <p>Às 5h da manhã ninguém quer pensar. Monte as marmitas na noite anterior, deixe a mochila fechada com roupa de treino. Pela manhã: só pegar e sair.</p>
+    <div class="cmetrics">
+      <div class="cm"><div class="v" style="color:var(--blue);">🧊</div><div class="l">Precisa de frio</div></div>
+      <div class="cm"><div class="v" style="color:var(--green);">🥫</div><div class="l">Shelf-safe</div></div>
+      <div class="cm"><div class="v" style="color:var(--clay);">⚡</div><div class="l">Até 5 min</div></div>
+      <div class="cm"><div class="v" style="color:var(--amber);">🍱</div><div class="l">Marmita/pote</div></div>
+    </div>
+  </div>
+  <h2 class="blk">Seg · Qua · Sex — Trabalho + Musculação</h2>
+  <div class="mochi-day">
+    <div class="mochi-h"><span style="font-size:20px">🎒</span><div class="mday">O que levar</div><div class="mtype">TREINO DE FORÇA À NOITE</div></div>
+    <div class="mochi-b">
+      <div class="mochi-item"><div class="mochi-time">09:15</div><div class="mochi-meal"><div class="mochi-mname">Lanche da manhã</div><div style="font-size:13px;color:var(--text2);">Castanhas + fruta, pão de arroz com ovo, ou iogurte</div><div class="mochi-tags"><span class="mtag2 safe">🥫 shelf-safe</span><span class="mtag2 cold">🧊 iogurte: frio</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">11:45</div><div class="mochi-meal"><div class="mochi-mname">Almoço — marmita grande</div><div style="font-size:13px;color:var(--text2);">Frango + arroz integral + legumes. Montada na véspera.</div><div class="mochi-tags"><span class="mtag2 cold">🧊 precisa de frio</span><span class="mtag2 marmita">🍱 marmita</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">17:45</div><div class="mochi-meal"><div class="mochi-mname">Pré-treino — marmita pequena</div><div style="font-size:13px;color:var(--text2);">Batata-doce (220g) + frango (120g). Come antes de ir pra academia.</div><div class="mochi-tags"><span class="mtag2 cold">🧊 precisa de frio</span><span class="mtag2 marmita">🍱 marmita pequena</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">18:30</div><div class="mochi-meal"><div class="mochi-mname">Banana — 45min antes do treino</div><div style="font-size:13px;color:var(--text2);">1 banana. Carbo rápido. Abre o bolso externo da mochila.</div><div class="mochi-tags"><span class="mtag2 safe">🥫 shelf-safe</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">Pós</div><div class="mochi-meal"><div class="mochi-mname">Shaker — whey em pó separado</div><div style="font-size:13px;color:var(--text2);">Whey já medido num potinho. Na academia: mistura com água direto no shaker.</div><div class="mochi-tags"><span class="mtag2 safe">🥫 pó shelf-safe</span><span class="mtag2 fast">⚡ mistura na hora</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">+</div><div class="mochi-meal"><div class="mochi-mname">Roupa de treino + tênis</div><div style="font-size:13px;color:var(--text2);">Você vai direto da obra pra academia. Troca no vestiário.</div><div class="mochi-tags"><span class="mtag2 marmita">🎽 fundo da mochila</span></div></div></div>
+    </div>
+    <div class="mochi-note"><b>🌙 Véspera:</b> monte as duas marmitas (almoço + pré-treino) e deixe na geladeira. Separe o whey no potinho. Coloque a roupa de treino na mochila antes de dormir. Pela manhã: só pegar e sair.</div>
+  </div>
+  <h2 class="blk">Ter · Qui — Trabalho + Cardio</h2>
+  <div class="mochi-day">
+    <div class="mochi-h"><span style="font-size:20px">🎒</span><div class="mday">O que levar</div><div class="mtype">CARDIO À NOITE</div></div>
+    <div class="mochi-b">
+      <div class="mochi-item"><div class="mochi-time">09:15</div><div class="mochi-meal"><div class="mochi-mname">Lanche da manhã</div><div style="font-size:13px;color:var(--text2);">Mix de castanhas + maçã, ou iogurte com fruta</div><div class="mochi-tags"><span class="mtag2 safe">🥫 shelf-safe</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">11:45</div><div class="mochi-meal"><div class="mochi-mname">Almoço — marmita</div><div style="font-size:13px;color:var(--text2);">Ter: lentilha ao curry. Qui: feijão preto + frango + couve.</div><div class="mochi-tags"><span class="mtag2 cold">🧊 precisa de frio</span><span class="mtag2 marmita">🍱 marmita</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">15:30</div><div class="mochi-meal"><div class="mochi-mname">Lanche da tarde</div><div style="font-size:13px;color:var(--text2);">Ter: tapioca proteica. Qui: cottage + castanhas.</div><div class="mochi-tags"><span class="mtag2 cold">🧊 frio</span><span class="mtag2 marmita">🍱 potinho</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">+</div><div class="mochi-meal"><div class="mochi-mname">Roupa de corrida</div><div style="font-size:13px;color:var(--text2);">Troca antes do cardio.</div><div class="mochi-tags"><span class="mtag2 marmita">🎽 mochila</span></div></div></div>
+    </div>
+    <div class="mochi-note"><b>🌙 Véspera:</b> monte a marmita do almoço. Separe lanche da tarde em potinho. Coloque a roupa de cardio.</div>
+  </div>
+  <h2 class="blk">Sábado — Corrida Longa</h2>
+  <div class="mochi-day">
+    <div class="mochi-h"><span style="font-size:20px">🏃‍♂️</span><div class="mday">Kit de corrida</div><div class="mtype">SAIR ÀS 6H30</div></div>
+    <div class="mochi-b">
+      <div class="mochi-item"><div class="mochi-time">06:30</div><div class="mochi-meal"><div class="mochi-mname">2 bananas + tapioca com mel</div><div style="font-size:13px;color:var(--text2);">Come antes de sair. Tapioca: 2 min na frigideira.</div><div class="mochi-tags"><span class="mtag2 safe">🥫 shelf-safe</span><span class="mtag2 fast">⚡ 2 min</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">Corrida</div><div class="mochi-meal"><div class="mochi-mname">Água de coco</div><div style="font-size:13px;color:var(--text2);">Para corridas acima de 50min. Bolsão do shorts ou camelback.</div><div class="mochi-tags"><span class="mtag2 cold">🧊 gelada</span></div></div></div>
+      <div class="mochi-item"><div class="mochi-time">Pós</div><div class="mochi-meal"><div class="mochi-mname">Shaker de recuperação imediata</div><div style="font-size:13px;color:var(--text2);">Whey (40g) + mel + aveia. Mistura com água de coco ao terminar. Janela de 30min.</div><div class="mochi-tags"><span class="mtag2 safe">🥫 pó shelf-safe</span><span class="mtag2 fast">⚡ mistura na hora</span></div></div></div>
+    </div>
+    <div class="mochi-note"><b>🌙 Véspera (quarta já deixa pronto):</b> whey medido no potinho, água de coco gelando, bananas separadas na fruteira. Zero decisão na manhã de sábado.</div>
+  </div>
+  <h2 class="blk">Emergências proteicas</h2>
+  <div class="c3">
+    <div class="ic"><div class="i">🐟</div><h4>Frango congelado?</h4><div class="dose">Atum em lata</div><p>Abrir e juntar à marmita. 34–38g de proteína, zero preparo. Ter sempre 2–3 latas de reserva.</p></div>
+    <div class="ic"><div class="i">🥚</div><h4>Sem marmita pronta?</h4><div class="dose">3 ovos mexidos</div><p>4 minutos. 18g proteína. Com pão de arroz já vira refeição. Nada de pular.</p></div>
+    <div class="ic"><div class="i">🥛</div><h4>Zero tempo?</h4><div class="dose">Iogurte grego + banana</div><p>Sem preparo. 15–17g proteína. Para o catabolismo enquanto você chega em casa.</p></div>
+  </div>
+</div>
+
+<!-- SEMANA -->
+<div id="semana" class="sec">
+  <div class="head">
+    <span class="eyebrow">Semana</span>
+    <h1>Orçamento,<br>sem <span class="g">desperdício.</span></h1>
+    <p>Digite o valor disponível da semana. O app monta a lista adaptada — e salva o histórico para você acompanhar os gastos ao longo do tempo.</p>
+  </div>
+  <div class="budget-hero">
+    <div class="bh-label">Quanto você tem esta semana?</div>
+    <div class="budget-input-wrap">
+      <span class="budget-prefix">R$</span>
+      <input type="number" id="budgetInput" class="budget-field" placeholder="210" min="50" max="600">
+      <button class="budget-calc-btn" onclick="calcBudget()">Montar lista</button>
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-top:12px;">Quando sobrar mais, opções premium aparecem automaticamente.</p>
+  </div>
+  <div id="budgetResult" class="budget-result"></div>
+  <h2 class="blk">Histórico de gastos</h2>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Cada lista montada salva aqui. Com o tempo o app calibra melhor as sugestões.</p>
+  <div id="budgetHist"></div>
+  <div class="price-entry">
+    <input type="number" id="manualPrice" placeholder="Valor gasto real (R$)" min="50" max="600">
+    <button onclick="saveManualPrice()">+ Registrar compra real</button>
   </div>
 </div>
 
@@ -969,6 +1178,130 @@ function openRecipe(key){
 }
 function closeRecipe(){document.getElementById("rcOverlay").classList.remove("on");}
 document.getElementById("rcOverlay").addEventListener("click",e=>{if(e.target.id==="rcOverlay")closeRecipe();});
+
+/* ════════ MODO DO DIA ════════ */
+function setMode(mode,btn){
+  document.querySelectorAll('.mdo').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const cp=document.getElementById('cardapio');
+  cp.classList.remove('notreino','corrida');
+  const info=document.getElementById('modeInfoBanner');
+  if(mode==='semtreino'){
+    cp.classList.add('notreino');
+    info.style.display='block';
+    info.innerHTML='<b>Modo Sem Treino</b> — Pré e pós-treino removidos. Meta do dia: <b>~3.200 kcal</b>. Mantenha a proteína alta para preservar a massa.';
+  } else if(mode==='corrida'){
+    day('d-sab',document.querySelectorAll('.ds')[5]);
+    info.style.display='block';
+    info.innerHTML='<b>Modo Corrida</b> — Plano do sábado ativo. Carbo alto, protocolo de reposição completo após a corrida longa.';
+  } else {
+    info.style.display='none';
+  }
+}
+
+/* ════════ COMPRAS TOGGLE ════════ */
+function toggleBudget(type,btn){
+  document.querySelectorAll('.bdg-opt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.slist').forEach(s=>s.classList.remove('on'));
+  document.getElementById('slist-'+type).classList.add('on');
+  prog();
+}
+
+// Atualiza prog() para contar só os itens visíveis
+const _origProg=prog;
+prog=function(){
+  const a=document.querySelectorAll('.slist.on .si2'),d=document.querySelectorAll('.slist.on .si2.done');
+  const pb=document.getElementById('pbar'),pt=document.getElementById('ptext');
+  if(pb)pb.style.width=(a.length?Math.round(d.length/a.length*100):0)+'%';
+  if(pt)pt.textContent=d.length+' / '+a.length;
+};
+prog();
+
+/* ════════ SEMANA ════════ */
+const BLISTS={
+  basic:[
+    {e:'🍗',t:'Proteínas',it:[['Peito de frango','800 g',20],['Atum natural','4 latas',20],['Ovos','18 unid',14]]},
+    {e:'🌾',t:'Grãos',it:[['Arroz integral','1 kg',7],['Feijão preto','500 g',6],['Aveia s/glúten','300 g',9],['Tapioca','400 g',6]]},
+    {e:'🥦',t:'Hortifruti',it:[['Banana','10 unid',4],['Batata-doce','1 kg',6],['Couve','1 maço',3.5],['Limão','6 unid',4],['Alho+Cebola+Gengibre','kit',7]]},
+    {e:'🫒',t:'Gorduras',it:[['Azeite','250 ml',12]]},
+    {e:'🌿',t:'Temperos',it:[['Curry+Cúrcuma','kit',7],['Mel','200 g',7]]}
+  ],
+  slim:[
+    {e:'🍗',t:'Proteínas',it:[['Peito de frango','1 kg',22],['Atum natural','4 latas',22],['Ovos','24 unid',20],['Queijo cottage','300 g',12]]},
+    {e:'🌾',t:'Grãos & Carbos',it:[['Arroz integral','1 kg',7],['Feijão preto','500 g',6],['Lentilha','500 g',9],['Tapioca (goma)','400 g',6],['Aveia s/glúten','300 g',9]]},
+    {e:'🥦',t:'Hortifruti',it:[['Banana','12 unid',5],['Batata-doce','1,5 kg',9],['Couve-manteiga','1 maço',3.5],['Cenoura','500 g',3.5],['Tomate','500 g',4.5],['Abacate','2 unid',7],['Limão','8 unid',4],['Alho+Cebola+Gengibre','kit',7]]},
+    {e:'🥛',t:'Laticínios',it:[['Iogurte grego integral','400 g',10]]},
+    {e:'🫒',t:'Gorduras',it:[['Azeite extravirgem','250 ml',12],['Pasta de amendoim','250 g',12]]},
+    {e:'🌿',t:'Temperos',it:[['Curry em pó','50 g',4],['Cúrcuma','50 g',3],['Mel puro','200 g',7],['Cacau em pó 100%','100 g',6]]},
+    {e:'💊',t:'Suplemento',it:[['Creatina monohidratada','150 g',15]]}
+  ],
+  medium:[
+    {e:'🍗',t:'Proteínas',it:[['Peito de frango','1,2 kg',27],['Filé de tilápia','400 g',18],['Atum natural','4 latas',22],['Ovos','24 unid',20],['Queijo cottage','400 g',16]]},
+    {e:'🌾',t:'Grãos & Carbos',it:[['Arroz integral','1,5 kg',11],['Feijão preto','500 g',6],['Lentilha','500 g',9],['Quinoa','300 g',14],['Tapioca','400 g',6],['Aveia s/glúten','500 g',14],['Granola s/glúten','400 g',16]]},
+    {e:'🥦',t:'Hortifruti',it:[['Banana','15 unid',6],['Batata-doce','2 kg',12],['Couve-manteiga','2 maços',7],['Cenoura','1 kg',7],['Tomate','1 kg',9],['Abacate','3 unid',10],['Pimentão','3 unid',8],['Limão','8 unid',4],['Alho+Cebola+Gengibre','kit',8]]},
+    {e:'🥛',t:'Laticínios',it:[['Iogurte grego integral','800 g',20],['Leite integral','2 L',10]]},
+    {e:'🫒',t:'Gorduras',it:[['Azeite extravirgem','500 ml',22],['Pasta de amendoim','500 g',22],['Castanha-do-pará','100 g',12]]},
+    {e:'🌿',t:'Temperos',it:[['Curry em pó','50 g',4],['Cúrcuma','50 g',3],['Mel puro','350 g',12],['Cacau 100%','200 g',12]]},
+    {e:'💊',t:'Suplemento',it:[['Creatina monohidratada','300 g',25]]}
+  ]
+};
+
+function calcBudget(){
+  const val=parseFloat(document.getElementById('budgetInput').value);
+  if(!val||val<50)return;
+  const result=document.getElementById('budgetResult');
+  result.classList.add('on');
+  let tier,note,key;
+  if(val<175){tier='Básico';note='Foco total em proteína acessível. Frango, atum e ovos garantem os 190g/dia.';key='basic';}
+  else if(val<260){tier='Essencial';note='Plano completo e funcional. Sem whey nem salmão — mas nada importante faltando.';key='slim';}
+  else{tier='Padrão';note='Mais variedade. Inclui tilápia, quinoa, granola e castanhas. Creatina incluída.';key='medium';}
+  const list=BLISTS[key];
+  let total=0; list.forEach(c=>c.it.forEach(i=>total+=i[2]));
+  let html=`<div class="bres-title">Plano ${tier} — R$${val.toFixed(0)} disponíveis · estimativa ~R$${Math.round(total)}</div>`;
+  html+=`<p style="font-size:13.5px;color:var(--text2);margin-bottom:18px;">${note}</p><div class="scols">`;
+  list.forEach(cat=>{
+    html+=`<div class="scat"><div class="scat-h"><span class="i">${cat.e}</span><span class="t">${cat.t}</span></div><div class="scat-b">`;
+    cat.it.forEach(item=>{
+      html+=`<div class="si2" onclick="tog(this)"><div class="box"></div><span class="n">${item[0]}</span><span class="q">${item[1]}</span></div>`;
+    });
+    html+=`</div></div>`;
+  });
+  html+=`</div>`;
+  result.innerHTML=html;
+  saveBudgetHistory(val);
+  renderHistory();
+}
+
+function saveBudgetHistory(val){
+  try{
+    const h=JSON.parse(localStorage.getItem('ef_budget')||'[]');
+    h.unshift({date:new Date().toLocaleDateString('pt-BR'),val:parseFloat(val).toFixed(0)});
+    if(h.length>10)h.pop();
+    localStorage.setItem('ef_budget',JSON.stringify(h));
+  }catch(e){}
+}
+
+function saveManualPrice(){
+  const val=parseFloat(document.getElementById('manualPrice').value);
+  if(!val||val<10)return;
+  saveBudgetHistory(val);
+  document.getElementById('manualPrice').value='';
+  renderHistory();
+}
+
+function renderHistory(){
+  const el=document.getElementById('budgetHist');
+  if(!el)return;
+  try{
+    const h=JSON.parse(localStorage.getItem('ef_budget')||'[]');
+    if(!h.length){el.innerHTML='<div class="ph-empty">Nenhum registro ainda. Monte uma lista acima ou registre uma compra.</div>';return;}
+    const avg=h.reduce((s,r)=>s+parseFloat(r.val),0)/h.length;
+    el.innerHTML=h.map(r=>`<div class="ph-row"><span class="ph-date">${r.date}</span><span class="ph-val">R$${r.val}</span></div>`).join('')+
+      `<div class="ph-row" style="margin-top:8px;padding-top:12px;border-top:1px solid var(--line2);"><span class="ph-date" style="color:var(--text2);font-weight:600;">Média</span><span class="ph-val">R$${avg.toFixed(0)}</span></div>`;
+  }catch(e){}
+}
+renderHistory();
 // abre automaticamente se estiver na janela de 40min antes de uma refeição (1x por refeição)
 (function autoOpen(){
  if(isDue()){
